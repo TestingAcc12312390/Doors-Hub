@@ -852,7 +852,7 @@ Section:NewButton("Sexsation - Doors (Free)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/730854e5b6499ee91deb1080e8e12ae3.lua"))()
 end)
 
-Section:NewButton("Abyssal Hub", "ButtonInfo", function()
+Section:NewButton("Abyssal Hub", "Credit to FireBacon & wop2p", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/bocaj111004/Abysall/refs/heads/main/Loader.luau"))()
 end)
 
