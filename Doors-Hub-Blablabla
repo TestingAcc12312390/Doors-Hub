@@ -89,6 +89,10 @@ Section:NewButton("Water Rises Mode", "Original Credit to Oof & Credit to VoorPr
 loadstring(game:HttpGet("https://pastefy.app/mrM9vA2L/raw"))()
 end)
 
+Section:NewButton("Nightmare Mode", "Made by Kodbol & Remade by Reboundplayz", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/YbkbZ3fp"))()
+end)
+
 Section:NewButton("Insanitas Mode", "Made by Guestly (Celestian) & Vuivuiviu2", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/GuestlyTheGreatestGuest/Modes/refs/heads/main/Insanitas-Mode-Made-By-Guestly-And-Vuivuiviu2"))()
 end)
@@ -373,10 +377,6 @@ end)
 
 Section:NewButton("The Mines Mode", "Made by Gab", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/Hgn6DarS"))()
-end)
-
-Section:NewButton("Nightmare Mode", "Made by Kodbol & Remade by Reboundplayz", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/YbkbZ3fp"))()
 end)
 
 Section:NewButton("Difficulty Mode", "Made by eoyoustme", function()
