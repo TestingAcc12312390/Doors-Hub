@@ -5,6 +5,52 @@ game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage(
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to RealblueYT for the Loading UI & The Sign Text In Chat</font></b>")
 
+-- config
+local TARGET_GUI   = "⭐Doors Modes Hub V28⭐ (Alpha)"
+local BUTTON_TEXT  = "Open Menu"
+local CLOSED_TEXT  = "Open Menu"
+local OPEN_TEXT    = "Close Menu"
+
+-- services
+local Players   = game:GetService("Players")
+local player    = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- create the toggle button GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name            = "ToggleButtonGui"
+screenGui.ResetOnSpawn    = false
+screenGui.ZIndexBehavior  = Enum.ZIndexBehavior.Sibling
+screenGui.Parent          = playerGui
+
+local button = Instance.new("TextButton")
+button.Name              = "ToggleBtn"
+button.Text              = BUTTON_TEXT
+button.Size              = UDim2.new(0, 130, 0, 40)
+button.Position          = UDim2.new(0, 16, 1, -56)
+button.AnchorPoint       = Vector2.new(0, 1)
+button.BackgroundColor3  = Color3.fromRGB(30, 30, 30)
+button.TextColor3        = Color3.fromRGB(255, 255, 255)
+button.Font              = Enum.Font.GothamBold
+button.TextSize          = 14
+button.BorderSizePixel   = 0
+button.Parent            = screenGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 8)
+corner.Parent       = button
+
+-- toggle logic
+button.MouseButton1Click:Connect(function()
+    local target = playerGui:FindFirstChild(TARGET_GUI)
+    if not target then
+        warn("[Toggle] '" .. TARGET_GUI .. "' not found in PlayerGui")
+        return
+    end
+    target.Enabled = not target.Enabled
+    button.Text    = target.Enabled and OPEN_TEXT or CLOSED_TEXT
+end)
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DenDenZZZ/Kavo-UI-Library/main/Kavo.lua"))()
 
 local Window = Library.CreateLib("⭐Doors Modes Hub V28⭐ (Alpha)", "BloodTheme")
