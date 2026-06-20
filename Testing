@@ -1569,14 +1569,6 @@ local Section = Tab:NewSection("---Credits---")
 local Section = Tab:NewSection("Hub by Rip_Silence")
 local Section = Tab:NewSection("Credit to Everyone")
 
-local cue2 = Instance.new("Sound")
-cue2.Parent = game.Workspace
-cue2.Name = "Spawn"
-cue2.SoundId = "rbxassetid://9045295141"
-cue2.Volume = 2
-cue2.PlaybackSpeed = 1
-cue2:Play()
-
 local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local mainUI = playerGui:WaitForChild("MainUI")
 local mainFrame = mainUI:WaitForChild("MainFrame")
