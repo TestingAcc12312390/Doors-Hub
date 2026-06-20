@@ -6,7 +6,7 @@ wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to RealblueYT for the Loading UI & The Sign Text In Chat</font></b>")
 
 -- config
-local TARGET_GUI = "â­Doors Modes Hub V29â­ (Alpha)"
+local TARGET_GUI = "⭐Doors Modes Hub V29⭐ (Alpha)"
 local BUTTON_TEXT = "Open Menu"
 local CLOSED_TEXT = "Open Menu"
 local OPEN_TEXT = "Close Menu"
@@ -53,9 +53,9 @@ end)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DenDenZZZ/Kavo-UI-Library/main/Kavo.lua"))()
 
-local Window = Library.CreateLib("â­Doors Modes Hub V29â­ (Alpha)", "BloodTheme")
+local Window = Library.CreateLib("⭐Doors Modes Hub V29⭐ (Alpha)", "BloodTheme")
 
-local Tab = Window:NewTab("ðŸ”ªModesðŸ”ª")
+local Tab = Window:NewTab("🔪Modes🔪")
 
 local Section = Tab:NewSection("Have Fun With These Modes")
 
@@ -509,7 +509,7 @@ Section:NewButton("Improbable Mode Final Version (IMPOSSIBLEâš ï¸âš ï¸
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Improbable-Mode-Final-Version"))()
 end)
 
-local Tab = Window:NewTab("ðŸ’ŽExtraðŸ’Ž")
+local Tab = Window:NewTab("💎Extra💎")
 
 local Section = Tab:NewSection("Very Cool Things")
 
@@ -863,7 +863,7 @@ Section:NewButton("THE OVERDOORS (Final Version)", "Credit to Chu be te liet", f
 loadstring(game:HttpGet("https://raw.githubusercontent.com/chubeteliet-cpu/OVERDOORS-rework-ver/refs/heads/main/OVERDOORS%20entity%20finale%20upd", true))()
 end)
 
-local Tab = Window:NewTab("ðŸŒ¹OG ModesðŸŒ¹")
+local Tab = Window:NewTab("🌹OG Modes🌹")
 
 local Section = Tab:NewSection("Only Works in Super Hard Mode")
 
@@ -879,7 +879,7 @@ Section:NewButton("Impossible Mode [OG]", "OG Mode", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Ukazix/impossible-mode/refs/heads/main/Protected_79.lua.txt, true"))()
 end)
 
-local Tab = Window:NewTab("ðŸ“„Other ScriptsðŸ“„")
+local Tab = Window:NewTab("📄Other Scripts📄")
 
 local Section = Tab:NewSection("Enjoy these Scripts")
 
@@ -970,7 +970,7 @@ Section:NewButton("Anctarus7105's Hub V3.5", "Credit to Anctarus7105", function(
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/My-creations/refs/heads/main/Anctarus7105'sHubV3.5"))()
 end)
 
-local Tab = Window:NewTab("ðŸ˜ˆLegacy ModeðŸ˜ˆ")
+local Tab = Window:NewTab("😈Legacy Mode😈")
 
 local Section = Tab:NewSection("Only Works In Hotel-")
 
@@ -986,7 +986,7 @@ Section:NewButton("Fear Mode (Legacy)", "Made by reboundplayz", function()
 loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Fear%20Mode%20LEGACY"))()
 end)
 
-local Tab = Window:NewTab("âš ï¸Entity Spawnerâš ï¸")
+local Tab = Window:NewTab("⚠️Entity Spawner⚠️")
 
 local Section = Tab:NewSection("Custom Entity Spawner")
 
@@ -1215,7 +1215,7 @@ local spawner = loadstring(game:HttpGet(
 
 local entity = spawner.Create({
 Entity = {
-Name = "Z88",
+Name = "Z-88",
 Asset = "rbxassetid://76660923994857",
 HeightOffset = 0
 },
@@ -1345,7 +1345,7 @@ Section:NewButton("Entity Spawner Hub", "ButtonInfo", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/plamen6789/UtilitiesHub/main/UtilitiesGUI'))()
 end)
 
-local Tab = Window:NewTab("âœ¨Custom Itemâœ¨")
+local Tab = Window:NewTab("✨Custom Item✨")
 
 local Section = Tab:NewSection("Enjoy These Custom Items")
 
@@ -1540,7 +1540,7 @@ Section:NewButton("Size Stick (UPDATED)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastefy.app/dy85jtB6/raw"))()
 end)
 
-local Tab = Window:NewTab("ðŸ¤”Update LogsðŸ¤”")
+local Tab = Window:NewTab("🤔Update Logs🤔")
 
 local Section = Tab:NewSection("---Update Logs---")
 
@@ -1563,7 +1563,7 @@ local Section = Tab:NewSection("16. Added Strange Mode In Modes Section")
 local Section = Tab:NewSection("17. Added AyZen Mode In Modes Section")
 local Section = Tab:NewSection("18. Added Spear (Minecraft Item) In Custom Item Section")
 
-local Tab = Window:NewTab("ðŸ˜„CreditsðŸ˜„")
+local Tab = Window:NewTab("😄Credits😄")
 
 local Section = Tab:NewSection("---Credits---")
 local Section = Tab:NewSection("Hub by Rip_Silence")
@@ -1578,7 +1578,7 @@ local intro = shut:Clone()
 intro.Parent = mainUI
 intro.Name = "Fragment Mode Intro"
 intro.Visible = true
-intro.Text = "â­Doors Modes Hub V29â­"
+intro.Text = "⭐Doors Modes Hub V29⭐"
 intro.TextTransparency = 0
 
 local underlinePart = intro:FindFirstChild("Underline")
