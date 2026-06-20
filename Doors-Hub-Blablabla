@@ -1,44 +1,44 @@
 wait(4.85)
-game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V28 Loaded!</font></b>")
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V29 Loaded!</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Made By Rip_Silence (#idkman06483)</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to RealblueYT for the Loading UI & The Sign Text In Chat</font></b>")
 
 -- config
-local TARGET_GUI   = "⭐Doors Modes Hub V28⭐ (Alpha)"
-local BUTTON_TEXT  = "Open Menu"
-local CLOSED_TEXT  = "Open Menu"
-local OPEN_TEXT    = "Close Menu"
+local TARGET_GUI = "⭐Doors Modes Hub V29⭐ (Alpha)"
+local BUTTON_TEXT = "Open Menu"
+local CLOSED_TEXT = "Open Menu"
+local OPEN_TEXT = "Close Menu"
 
 -- services
-local Players   = game:GetService("Players")
-local player    = Players.LocalPlayer
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 -- create the toggle button GUI
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name            = "ToggleButtonGui"
-screenGui.ResetOnSpawn    = false
-screenGui.ZIndexBehavior  = Enum.ZIndexBehavior.Sibling
-screenGui.Parent          = playerGui
+screenGui.Name = "ToggleButtonGui"
+screenGui.ResetOnSpawn = false
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Parent = playerGui
 
 local button = Instance.new("TextButton")
-button.Name              = "ToggleBtn"
-button.Text              = BUTTON_TEXT
-button.Size              = UDim2.new(0, 130, 0, 40)
-button.Position          = UDim2.new(0, 16, 1, -56)
-button.AnchorPoint       = Vector2.new(0, 1)
-button.BackgroundColor3  = Color3.fromRGB(30, 30, 30)
-button.TextColor3        = Color3.fromRGB(255, 255, 255)
-button.Font              = Enum.Font.GothamBold
-button.TextSize          = 14
-button.BorderSizePixel   = 0
-button.Parent            = screenGui
+button.Name = "ToggleBtn"
+button.Text = BUTTON_TEXT
+button.Size = UDim2.new(0, 130, 0, 40)
+button.Position = UDim2.new(0, 16, 1, -56)
+button.AnchorPoint = Vector2.new(0, 1)
+button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 14
+button.BorderSizePixel = 0
+button.Parent = screenGui
 
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 8)
-corner.Parent       = button
+corner.Parent = button
 
 -- toggle logic
 button.MouseButton1Click:Connect(function()
@@ -48,12 +48,12 @@ button.MouseButton1Click:Connect(function()
         return
     end
     target.Enabled = not target.Enabled
-    button.Text    = target.Enabled and OPEN_TEXT or CLOSED_TEXT
+    button.Text = target.Enabled and OPEN_TEXT or CLOSED_TEXT
 end)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DenDenZZZ/Kavo-UI-Library/main/Kavo.lua"))()
 
-local Window = Library.CreateLib("⭐Doors Modes Hub V28⭐ (Alpha)", "BloodTheme")
+local Window = Library.CreateLib("⭐Doors Modes Hub V29⭐ (Alpha)", "BloodTheme")
 
 local Tab = Window:NewTab("🔪Modes🔪")
 
@@ -112,7 +112,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/realbluedeptrainhat/C
 end)
 
 Section:NewButton("Fear Mode V2", "Made By Reboundplayz", function()
-loadstring(Game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Doors%20Fear%20Mode%20Mobile"))()
+loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Doors%20Fear%20Mode"))()
 end)
 
 Section:NewButton("Fog Mode (Released)", "Made By Vuivuiviu2", function()
@@ -151,8 +151,8 @@ Section:NewButton("Horror Mode (Fixed)", "Original Credit to Chrono and Credit t
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thelostw3r/Mods/main/HorrorMode.lua"))()
 end)
 
-Section:NewButton("Crazy Mode", "Credit to FenzerPlayerPressure", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FenzerPlayerPressure/Recreates/refs/heads/main/Crazy%20Mode.Lua"))()
+Section:NewButton("Crazy Mode", "Credit to Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/lynguyen26031993-design/-u/refs/heads/main/crazy-mode"))()
 end)
 
 Section:NewButton("Roomy Mode", "Made by FenzerPlayerPressure", function()
@@ -187,6 +187,14 @@ Section:NewButton("Rooms Mode", "Made by Gab", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/WLjeQQWm"))()
 end)
 
+Section:NewButton("AyZen Mode", "Made by Anctarus7105", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/My-Modes/refs/heads/main/AyZen%20Mode/Mode.lua"))()
+end)
+
+Section:NewButton("Strange Mode", "Made By Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/Strange-Mode"))()
+end)
+
 Section:NewButton("Anarchy Mode", "Released By Anctarus7105", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/Recreated-modes/refs/heads/main/Anarchy%20Release"))()
 end)
@@ -203,8 +211,20 @@ Section:NewButton("Stingray Mode", "Made by Anzor", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Anzor5458/Doors-stingray-mod/refs/heads/main/Anzor'))()
 end)
 
+Section:NewButton("Medium Mode", "Made by someone that idk", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Medium-Mode-Made-by-someone-that-idk"))()
+end)
+
 Section:NewButton("Insane Mode", "Made by TheDarkMan", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheDarkMan1334/Insane-mode/refs/heads/main/Insane%20Mode"))()
+end)
+
+Section:NewButton("Arctic Mode", "Made by Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/Arctic-Mode-(Beta)-By-Guestly-And-Vuivuiviu2"))()
+end)
+
+Section:NewButton("Hardcore Mode (But Bad)", "Made by RipperHC", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KendrickFan59/privatev2/refs/heads/main/efdff"))()
 end)
 
 Section:NewButton("Ringer Mode (Remake)", "Remaked by RealblueYT", function()
@@ -219,16 +239,16 @@ Section:NewButton("Forbidden Mode (Recreated)", "Credit to Noah and Recreated By
 loadstring(game:HttpGet("https://raw.githubusercontent.com/GuestlyTheGreatestGuest/Modes/refs/heads/main/Forbidden-Mode-recreated-by-Guestly"))()
 end)
 
-Section:NewButton("Lunacy Mode V5 (Recreated)", "Made by Guestly & Vuivuiviu2 & Nowhywhat & VoorPr0", function()
+Section:NewButton("Lunacy Mode V6 (Recreated)", "Made by Guestly & Vuivuiviu2 & Nowhywhat & VoorPr0", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nowhywhat/Cooking/main/LunacyMode.lua"))()
 end)
 
-Section:NewButton("Fragmented Mode V5", "Credit by Nhankgnew", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg/refs/heads/main/fragmented%20v5"))()
+Section:NewButton("Fragmented Mode V5", "Credit to Nhankgnew", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg-/refs/heads/main/the%20fragments%20v5"))()
 end)
 
-Section:NewButton("Degenerate Mode", "Made by Guestly (Celestian)", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/GuestlyTheGreatestGuest/Modes/refs/heads/main/My-brand-new-Degenerate-Mode%20(New%20Obfuscator)"))()
+Section:NewButton("Degenerate Mode (Reposted)", "Made by Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/Degenerate-Mode-Reposted"))()
 end)
 
 Section:NewButton("Hardcore Mode (Fixed)", " Made By Noonie & Ping and Credit to THE_LOSTW3R for fixing the Hardcore Mode", function()
@@ -557,8 +577,8 @@ Section:NewButton("Simple Script Loader", "Credit to someone that idk", function
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Simple-Script-Loader-92632"))()
 end)
 
-Section:NewButton("Dev Admin Panel (Need Admin Panel)", "Credit to Gab", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/Tp7M4r2H"))()
+Section:NewButton("Dev Admin Panel (Need Admin Panel)", "Credit to someone that idk", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Add Secret Entity", "Credit to Rip_Silence", function()
@@ -934,6 +954,10 @@ Section:NewButton("Eukard's Doors Modes Hub", "Made By Eukard", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Aboba228-Abobic/Eukard-s-Hub/refs/heads/main/EukardsHub'))()
 end)
 
+Section:NewButton("Grampy's Doors Modes Hub", "Made by Grampy", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GrampyMods/doorsmodshub/refs/heads/main/script"))()
+end)
+
 Section:NewButton("Doors Modes Hub V1 (Oldest Version??)", "Oldest Version Of Doors Modes Hub???", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Unknown"))()
 end)
@@ -952,6 +976,10 @@ local Section = Tab:NewSection("Only Works In Hotel-")
 
 Section:NewButton("Hardcore Mode (Legacy)", "Fixed By THE_LOSTW3R", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thelostw3r/Mods/main/HardcoreMode%5BLEGACY%5D.lua"))()
+end)
+
+Section:NewButton("Impossible Mode (Legacy)", "Made by reboundplayz", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Impossible-Mode-Legacy-Made-by-reboundplayz"))()
 end)
 
 Section:NewButton("Fear Mode (Legacy)", "Made by reboundplayz", function()
@@ -1112,6 +1140,18 @@ MathRandomSpawn2 = 15
 }
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IdkMyNameLoll/34921473024732147312483297412/refs/heads/main/dozerspawner"))()
+end)
+
+Section:NewButton("Conjoinment Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Conjoinment%20Spawner"))()
+end)
+
+Section:NewButton("Grudge Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/arkanzulfadliputra-oss/Entities-Models/refs/heads/main/Mod/Entity/With%20Jumpscare/Grudge.lua"))()
+end)
+
+Section:NewButton("Cease (But Bad) Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KendrickFan59/privatev2/refs/heads/main/ceaser"))()
 end)
 
 Section:NewButton("Fear Spawner", "ButtonInfo", function()
@@ -1325,6 +1365,14 @@ Section:NewButton("Scroll Of Sevenless", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Ahma174/Tool/refs/heads/main/Doors%20Scroll%20Of%20Sevenless.lua"))()
 end)
 
+Section:NewButton("Spear (Minecraft Item)", "Made by Nowhywhats", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Spear-Minecraft-Item-Made-By-Nowhywhat"))()
+end)
+
+Section:NewButton("Curious Candle", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kodbolx/kodbolhub/refs/heads/main/curiouscandle.lua"))()
+end)
+
 Section:NewButton("Crucifix", "by PenguinManiack", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
 end)
@@ -1496,21 +1544,24 @@ local Tab = Window:NewTab("🤔Update Logs🤔")
 
 local Section = Tab:NewSection("---Update Logs---")
 
-local Section = Tab:NewSection("1. Updated Impossible Mode In Modes Section")
-local Section = Tab:NewSection("2. Updated Nightmare Mode In Modes Section (It's Back)")
-local Section = Tab:NewSection("3. Fog Mode In Modes Section Is Finally Released")
-local Section = Tab:NewSection("4. Updated Lunacy Mode In Modes Section")
-local Section = Tab:NewSection("5. Updated Script Mode In Extra Section")
-local Section = Tab:NewSection("6. Added Fear Mode (Legacy) In Legacy Section")
-local Section = Tab:NewSection("7. Added R-40 Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("8. Added Angler Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("9. Added Fear Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("10. Added Game File Logger In Extra Section")
-local Section = Tab:NewSection("11. Added Abyssal Hub In Other Script Section")
-local Section = Tab:NewSection("12. Added Glassy Mode In Modes Section")
-local Section = Tab:NewSection("13. Added Stingray Mode In Modes Section")
-local Section = Tab:NewSection("14. Added Laver Mode (Recreated) In Modes Section")
-local Section = Tab:NewSection("15. Added Part Mode In Modes Section")
+local Section = Tab:NewSection("1. Updated Fear Mode V2 In Modes Section")
+local Section = Tab:NewSection("2. Updated Lunacy Mode V6 In Modes Section")
+local Section = Tab:NewSection("3. Updated Fragmented Mode V5 In Mode's Section")
+local Section = Tab:NewSection("4. Updated Degenerate Mode In Modes Section")
+local Section = Tab:NewSection("5. Updated Dev Admin Panel In Extra Section")
+local Section = Tab:NewSection("6. Updated Crazy Mode In Modes Section")
+local Section = Tab:NewSection("7. Added Impossible Mode (Legacy) In Legacy Mode Section")
+local Section = Tab:NewSection("8. Added Curious Candle In Custom Item Section")
+local Section = Tab:NewSection("9. Added Grudge Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("10. Added Cease (But Bad) Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("11. Added Conjoinment Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("12. Added Grampy's Doors Modes Hub In Other Script Section")
+local Section = Tab:NewSection("13. Added Arctic Mode In Modes Section")
+local Section = Tab:NewSection("14. Added Medium Mode In Modes Section")
+local Section = Tab:NewSection("15. Added Hardcore Mode (But bad) In Modes Section")
+local Section = Tab:NewSection("16. Added Strange Mode In Modes Section")
+local Section = Tab:NewSection("17. Added AyZen Mode In Modes Section")
+local Section = Tab:NewSection("18. Added Spear (Minecraft Item) In Custom Item Section")
 
 local Tab = Window:NewTab("😄Credits😄")
 
@@ -1523,7 +1574,7 @@ local intro = shut:Clone()
 intro.Parent = game.Players.LocalPlayer.PlayerGui.MainUI
 intro.Name = "Fragment Mode Intro"
 intro.Visible = true
-intro.Text = "⭐Doors Modes Hub V28⭐"
+intro.Text = "⭐Doors Modes Hub V29⭐"
 intro.TextTransparency = 0
 local underline = UDim2.new(1.1, 0, 0.015, 6)
 game.TweenService:Create(intro.Underline, TweenInfo.new(3), {Size = underline}):Play()
