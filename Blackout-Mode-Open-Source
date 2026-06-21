@@ -170,7 +170,7 @@ require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Good Luck (Yo
 
 coroutine.wrap(function()
     while true do
-        task.wait(135)
+        task.wait(130)
         
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
@@ -186,7 +186,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        task.wait(100)
+        task.wait(60)
         
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
@@ -202,7 +202,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        task.wait(270)
+        task.wait(160)
         
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
