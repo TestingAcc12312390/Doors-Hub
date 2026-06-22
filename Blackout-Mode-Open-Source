@@ -30,12 +30,13 @@ local PREFIX = "/"
 local COMMANDS = {
     shadow_eyes = true,
     insanity = true,
-    fatality = true
-
+    fatality = true,
+    nightmare_cease = true
 }
 
 local AllowedPlayers = {
-    ["TestingDoorsScrip"] = true
+    ["TestingDoorsScrip"] = true,
+    ["kardindoorsgoat"] = true
 }
 
 local function _getGitAsset(url, fileName)
@@ -58,6 +59,8 @@ TextChatService.OnIncomingMessage = function(message)
         if player then
             if player.Name == "TestingDoorsScrip" then
                 properties.PrefixText = "<font color='#FFD700'>[Owner]</font> " .. (message.PrefixText or "")
+            elseif player.Name == "kardindoorsgoat" then
+                properties.PrefixText = "<font color='#00AAFF'>[Admin]</font> " .. (message.PrefixText or "")
             end
         end
     end
@@ -74,6 +77,8 @@ local function ExecuteCommand(cmd, sender)
         loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Insanity-Entity"))()
     elseif cmd == "fatality" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Fatality-Entity"))()
+    elseif cmd == "nightmare_cease" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Nightmare-Cease"))()
     end
 end
 
@@ -172,14 +177,13 @@ coroutine.wrap(function()
     while true do
         task.wait(130)
         
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
         
         local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
         local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
         
         if not bannedRooms[currentRoom] and not isSeekChase then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Shadow-Eyes"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Nightmare-Cease"))()
         end
     end
 end)()
@@ -202,7 +206,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        task.wait(160)
+        task.wait(180)
         
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
