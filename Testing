@@ -887,7 +887,7 @@ Section:NewButton("Nullfire Script", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TeamNullFire/NullFire/main/loader.lua"))()
 end)
 
-Section:NewButton("Rapture Hub DoorsðŸšª V1.2", "ButtonInfo", function()
+Section:NewButton("Rapture Hub Doors🚪 V1.2", "ButtonInfo", function()
 --[[
 WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
 ]]
