@@ -1018,10 +1018,6 @@ Section:NewButton("Disturbance Spawner (READ THE DESCRIPTION)", "Execute Disturb
 loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg.-/refs/heads/main/intro%20fragmented"))()
 end)
 
-Section:NewButton("Admiration Spawner", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-V2-2/Doors/refs/heads/main/Admiration%20op"))()
-end)
-
 Section:NewButton("Obsession Spawner (READ THE DESCRIPTION)", "Execute Obsession Spawner at door 0 and open the next door", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Drop56796/Mayhem-mode-enity/main/Hard%20Obsession.lua"))()
 end)
@@ -1098,10 +1094,6 @@ end)
 
 Section:NewButton("Fluster Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster"))()
-end)
-
-Section:NewButton("Eclipser Spawner", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-V2-2/Doors/refs/heads/main/Eclipser"))()
 end)
 
 Section:NewButton("Angler Spawner", "ButtonInfo", function()
