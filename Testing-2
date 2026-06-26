@@ -1506,7 +1506,7 @@ end)
 
 local Tab = Window:NewTab("🔪Modes 2🔪")
 
-local Section = Tab:NewSection("Second Section of Modes")
+local Section = Tab:NewSection("Second Section Of Modes")
 
 Section:NewButton("Hardcore Mode (Remastered)", "Credit to someone that idk", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/daiayday/HardcoreRemastered/refs/heads/main/obf_L6zO2N0sG5ehDHd56JBc5z70TZ2piVOvIqsgE88741HXGrwv7E4qd6c8axu8z4oh.lua.txt"))()
