@@ -1504,7 +1504,7 @@ Section:NewButton("Size Stick (UPDATED)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastefy.app/dy85jtB6/raw"))()
 end)
 
-local Tab = Window:NewTab("🔪Modes 2🔪")
+local Tab = Window:NewTab("💔Modes 2💔")
 
 local Section = Tab:NewSection("Second Section Of Modes")
 
