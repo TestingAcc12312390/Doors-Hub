@@ -898,7 +898,7 @@ Section:NewButton("Joy Hub", "ButtonInfo", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Joy-hub-93382"))()
 end)
 
-Section:NewButton("Guestly's Doors Modes Hub V1, "Credit to Guestly (Celestian)", function()
+Section:NewButton("Guestly's Doors Modes Hub V1", "Credit to Guestly (Celestian)", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/GUESTLY-DOORS-MODE-HUB"))()
 end)
 
