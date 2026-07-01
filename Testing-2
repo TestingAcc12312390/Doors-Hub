@@ -1,12 +1,12 @@
 wait(4.85)
-game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V30 Loaded!</font></b>")
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V31 (Beta) Loaded!</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Made By Rip_Silence (#idkman06483)</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to RealblueYT for the Loading UI & The Sign Text In Chat</font></b>")
 
 -- config
-local TARGET_GUI = "⭐Doors Modes Hub V30⭐ (Alpha)"
+local TARGET_GUI = "⭐Doors Modes Hub V31⭐ (Beta)"
 local BUTTON_TEXT = "Open Menu"
 local CLOSED_TEXT = "Open Menu"
 local OPEN_TEXT = "Close Menu"
@@ -53,7 +53,7 @@ end)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DenDenZZZ/Kavo-UI-Library/main/Kavo.lua"))()
 
-local Window = Library.CreateLib("⭐Doors Modes Hub V29⭐ (Alpha)", "BloodTheme")
+local Window = Library.CreateLib("⭐Doors Modes Hub V31⭐ (Beta)", "BloodTheme")
 
 local Tab = Window:NewTab("🔪Modes🔪")
 
@@ -79,8 +79,8 @@ Section:NewButton("Fear Mode (Fixed)", "Recreated by Voorpr0", function()
 loadstring(game:HttpGet("https://pastefy.app/jFdxd7Zu/raw"))()
 end)
 
-Section:NewButton("Hard Mode (Locked)", "Fixed by Voorpr0 & Nowhywhats", function()
-loadstring(game:HttpGet("https://arch-http.vercel.app/files/ProtectHard"))()
+Section:NewButton("Hard Mode (Reworked)", "Reworked by Voorpr0 & Nowhywhats", function()
+loadstring(game:HttpGet("https://pastefy.app/Ug2IYzPL/raw"))()
 end)
 
 Section:NewButton("Laver Mode (Recreated)", "Recreated By Guestly (Celestian)", function()
@@ -535,6 +535,18 @@ end)
 
 Section:NewButton("Dev Admin Panel (Need Admin Panel)", "Credit to someone that idk", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
+end)
+
+Section:NewButton("Viridis Rift", "Made By Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/Viridis-Rift"))()
+end)
+
+Section:NewButton("Glitch Rift", "Made By Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/Glitch-Rift"))()
+end)
+
+Section:NewButton("Mischievous Rift", "Made By Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/Mischievous-Rift"))()
 end)
 
 Section:NewButton("Add Secret Entity", "Credit to Rip_Silence", function()
@@ -1349,6 +1361,10 @@ Section:NewButton("Infinite Vitamins", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/refs/heads/main/Inf_Vitamins.lua"))()
 end)
 
+Section:NewButton("Moon Jug (Fixed)", "Can be helpful sometimes", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/MoonJug"))()
+end)
+
 Section:NewButton("Luger Pistol", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/WcYCnACD"))()
 end)
@@ -1359,6 +1375,10 @@ end)
 
 Section:NewButton("Flashlight V1", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/binhlforsaken156-sys/Flash-light/refs/heads/main/Flash-light-V1", true))()
+end)
+
+Section:NewButton("Lucky Block", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTTTTTTTT/upload/refs/heads/main/content/5d91c0185bdc4dd5b80c84c50d8ba78e_obf.lua",true))()
 end)
 
 Section:NewButton("Spiral Bottle", "ButtonInfo", function()
@@ -1375,6 +1395,10 @@ end)
 
 Section:NewButton("Guiding Flashlight", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/binhlforsaken156-sys/Guiding-flash-light/refs/heads/main/Guiding-flash-light.lua", true))()
+end)
+
+Section:NewButton("Viridislight Jug", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Scripts/refs/heads/main/Viridislight-Jug"))()
 end)
 
 Section:NewButton("Jeff's Tip Jar", "ButtonInfo", function()
@@ -1436,6 +1460,10 @@ Section:NewButton("Lantern Item", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Junbbinopro/Item/refs/heads/main/lantern"))()
 end)
 
+Section:NewButton("Spiral Jug (Fixed)", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/Spiral-Jug"))()
+end)
+
 Section:NewButton("Flame Thrower", "Credit to JohnyGaming#2917", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JohnyGamingLUA/FlamethrowerDOORS/main/obfuscated.lua"))()
 end)
@@ -1450,6 +1478,10 @@ end)
 
 Section:NewButton("Screech Plushie", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/CRYiKPZX"))()
+end)
+
+Section:NewButton("Viridislight Bottle", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Scripts/refs/heads/main/Viridislight-Bottle"))()
 end)
 
 Section:NewButton("Purple Shakelight", "ButtonInfo", function()
@@ -1504,7 +1536,7 @@ Section:NewButton("Size Stick (UPDATED)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastefy.app/dy85jtB6/raw"))()
 end)
 
-local Tab = Window:NewTab("🔪Modes 2🔪")
+local Tab = Window:NewTab("💔Modes 2💔")
 
 local Section = Tab:NewSection("Second Section Of Modes")
 
@@ -1514,6 +1546,14 @@ end)
 
 Section:NewButton("Fragmented Mode (Recreation??)", "Recreation By THE_LOSTW3R", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thelostw3r/Mods/refs/heads/main/FragmentedModeRemake.lua"))()
+end)
+
+Section:NewButton("Laver Mode V2.1 (Fixed)", "Fixed By Reboundplayz", function()
+loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/laver%20mode"))()
+end)
+
+Section:NewButton("Nightmare Mode V2", "Made By Kodbol & Asif", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kodbol/Doors/refs/heads/main/Nightmare%20Mode/Main.lua"))()
 end)
 
 Section:NewButton("Furry Mode (Fixed)", "Made by VoorPr0", function()
@@ -1572,24 +1612,22 @@ local Tab = Window:NewTab("🤔Update Logs🤔")
 
 local Section = Tab:NewSection("---Update Logs---")
 
-local Section = Tab:NewSection("1. Updated Fragmented Mode V5 In Modes Section")
-local Section = Tab:NewSection("2. Updated Lunacy Mode V6 In Modes Section")
-local Section = Tab:NewSection("3. Updated Insane Mode (Recreated) In Modes Section")
-local Section = Tab:NewSection("4. Removed Old Guestly's Doors Modes Hub & Changed to new one")
-local Section = Tab:NewSection("5. Added Hardcore Mode (Retake) In Modes 2 Section")
-local Section = Tab:NewSection("6. Added Blackout Mode In Modes 2 Section")
-local Section = Tab:NewSection("7. Added Abyss Mode In Modes 2 Section")
-local Section = Tab:NewSection("8. Added New Section Named Modes 2")
-local Section = Tab:NewSection("9. Added Ice Mode In Modes 2 Section")
-local Section = Tab:NewSection("10. Added Corrode Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("11. Added Classio-Reboundier Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("12. Added Moriarty Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("13. Added Death Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("1. Updated Hard Mode In Modes Section (It's back)")
+local Section = Tab:NewSection("2. Added Viridislight Bottle In Custom Item Section")
+local Section = Tab:NewSection("3. Added Viridislight Jug In Custom Item Section")
+local Section = Tab:NewSection("4. Added Viridis Rift In Extra Section")
+local Section = Tab:NewSection("5. Added Glitch Rift In Extra Section")
+local Section = Tab:NewSection("6. Added Mischievous Rift In Extra Section")
+local Section = Tab:NewSection("7. Added Laver Mode V2.1 In Modes 2 Section")
+local Section = Tab:NewSection("8. Added Moon Jug In Custom Item Section")
+local Section = Tab:NewSection("9. Added Spiral Jug In Custom Item Section")
+local Section = Tab:NewSection("10. Added Lucky Block In Custom Item Section")
+local Section = Tab:NewSection("11. Added Nightmare Mode V2 In Modes 2 Section")
 
 local Tab = Window:NewTab("😄Credits😄")
 
 local Section = Tab:NewSection("---Credits---")
-local Section = Tab:NewSection("Hub by Rip_Silence")
+local Section = Tab:NewSection("Hub Made by Rip_Silence")
 local Section = Tab:NewSection("Credit to Everyone")
 
 local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -1601,7 +1639,7 @@ local intro = shut:Clone()
 intro.Parent = mainUI
 intro.Name = "Fragment Mode Intro"
 intro.Visible = true
-intro.Text = "⭐Doors Modes Hub V30⭐"
+intro.Text = "⭐Doors Modes Hub V31⭐"
 intro.TextTransparency = 0
 
 local underlinePart = intro:FindFirstChild("Underline")
