@@ -1,0 +1,15 @@
+coroutine.wrap(function()
+    while true do
+        task.wait(60)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Insanity-Entity"))()
+        end
+    end
+end)()
