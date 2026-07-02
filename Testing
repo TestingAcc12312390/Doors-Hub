@@ -1556,8 +1556,8 @@ Section:NewButton("Nightmare Mode V2", "Made By Kodbol & Asif", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kodbol/Doors/refs/heads/main/Nightmare%20Mode/Main.lua"))()
 end)
 
-Section:NewButton("Furry Mode (Fixed)", "Made by VoorPr0", function()
-loadstring(game:HttpGet("https://pastefy.app/US91TWoT/raw"))()
+Section:NewButton("Furry Mode (Locked)", "Made by VoorPr0", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Blackout Mode", "Made By Rip_Silence", function()
