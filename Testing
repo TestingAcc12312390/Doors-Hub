@@ -75,12 +75,12 @@ Section:NewButton("Ultra Hard Mode (UPDATED)", " Made By Zunxd", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Junxd-03/UltraHardModeUpdate/refs/heads/main/UltraHardMode.lua"))()
 end)
 
-Section:NewButton("Fear Mode (Fixed)", "Recreated by Voorpr0", function()
-loadstring(game:HttpGet("https://pastefy.app/jFdxd7Zu/raw"))()
+Section:NewButton("Fear Mode (Locked)", "Recreated by Voorpr0", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
-Section:NewButton("Hard Mode (Reworked)", "Reworked by Voorpr0 & Nowhywhats", function()
-loadstring(game:HttpGet("https://pastefy.app/Ug2IYzPL/raw"))()
+Section:NewButton("Hard Mode (Locked)", "Reworked by Voorpr0 & Nowhywhats", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Laver Mode (Recreated)", "Recreated By Guestly (Celestian)", function()
@@ -123,16 +123,16 @@ Section:NewButton("Wer Mode (Homemade Mode)", "Made by RealblueYT", function()
 loadstring(game:HttpGet("https://arch-http.vercel.app/files/Projectwermode"))()
 end)
 
-Section:NewButton("Impossible Mode V1.8 (Fixed)", "Fixed by Voorpr0 & Nowhywwhat & Guestly & Vuivuiviu2", function()
-loadstring(game:HttpGet("https://pastefy.app/PNJZ2hsx/raw"))()
+Section:NewButton("Impossible Mode V1.8 (Locked)", "Fixed by Voorpr0 & Nowhywwhat & Guestly & Vuivuiviu2", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Hallucination Mode (Easy Version)", " Credit to Guestly (Celestian)", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/GuestlyTheGreatestGuest/Modes/refs/heads/main/Hallucination-Mode-(Easy-Version)-Made-by-Celestian-on-Discord"))()
 end)
 
-Section:NewButton("Water Rises Mode", "Original Credit to Oof & Credit to VoorPr0 for reworking it", function()
-loadstring(game:HttpGet("https://pastefy.app/mrM9vA2L/raw"))()
+Section:NewButton("Water Rises Mode (Locked)", "Original Credit to Oof & Credit to VoorPr0 for reworking it", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Nightmare Mode", "Made by Kodbol & Remade by Reboundplayz", function()
