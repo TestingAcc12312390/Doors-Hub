@@ -1,0 +1,390 @@
+-- Global variable check using the shared table to persist across executions
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+if shared.NightmareModeExecuted then
+    local MainUI = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainUI")
+    require(MainUI.Initiator.Main_Game).caption("Executed 2 times! Returning...", true)
+    return -- Stops the script right here so it doesn't run again
+else
+    shared.NightmareModeExecuted = true
+end
+
+-- Continuing with your door 0 check
+local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+if currentRoom > 0 then
+    LocalPlayer.Character.Humanoid:TakeDamage(1000)
+    game:GetService("ReplicatedStorage").GameStats["Player_".. LocalPlayer.Name].Total.DeathCause.Value = "You must execute at door 0!"
+end
+
+-- Setup UI and variables
+local TextChatService = game:GetService("TextChatService")
+local _TweenService = game:GetService("TweenService")
+local _SoundService = game:GetService("SoundService")
+local _Debris = game:GetService("Debris")
+local workspaceService = game:GetService("Workspace")
+local currentRooms = workspaceService:WaitForChild("CurrentRooms")
+
+local MainGameModule
+local success_init, err_init = pcall(function()
+    return require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+end)
+
+if success_init and MainGameModule then
+    MainGameModule.caption("DOORS Hardcore: Revisited Initializing...", true)
+end
+
+-- Helper function to load scripts asynchronously and safely
+local function loadScriptAsync(url, name)
+    task.spawn(function()
+        local success, source = pcall(function()
+            return game:HttpGet(url)
+        end)
+        
+        if success and source and not source:find("404: Not Found") then
+            local func, err = loadstring(source)
+            if func then
+                local runSuccess, runErr = pcall(func)
+                if not runSuccess then
+                    warn("ðŸ”´ Error running script [" .. name .. "]: " .. tostring(runErr))
+                end
+            else
+                warn("âŒ Syntax error in [" .. name .. "]: " .. tostring(err))
+            end
+        else
+            warn("âš ï¸ Failed to download [" .. name .. "] (URL broken, offline, or timed out)")
+        end
+    end)
+end
+
+-- --- EXPERT ANTI-SPAWN CHECKS ---
+local function isSeekMusicPlaying()
+    local seekMusic = workspace:FindFirstChild("SeekMusic", true)
+    return seekMusic and seekMusic:IsA("Sound") and seekMusic.IsPlaying
+end
+
+local function isFigurePresent()
+    local room50 = currentRooms:FindFirstChild("50")
+    if room50 then
+        local figureSetup50 = room50:FindFirstChild("FigureSetup")
+        if figureSetup50 then
+            return true
+        end
+    end
+    return false
+end
+-- ---------------------------------
+
+-- Load all baseline background modes instantly without blocking execution
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20seek", "HC Seek")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Nightmare%20Guiding%20Light%20Music", "Guiding Light Music")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20music", "HC Music")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20titles", "HC Titles")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Sprint%20bar", "Sprint Bar")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20intro%20music", "Intro Music")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Hc%20credits", "Credits")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20ambush", "Ambush")
+loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20rush", "Rush")
+
+local PREFIX = "/"
+local COMMANDS = {
+    shocker = true,
+    ripper = true,
+    rebound = true,
+    ["A-60"] = true,
+    frostbite = true,
+    silence = true,
+    dread = true,
+    ["A-90"] = true,
+    cease = true,
+    deer_god = true,
+    ["A-200"] = true,
+    fart = true,
+    superpower = true,
+    troll = true,
+    freddy = true,
+    killall = true,
+}
+
+local AllowedPlayers = {
+    ["kardindoorsgoat"] = true,
+    ["TestingDoorsScrip"] = true,
+    ["DaviGamer_NovaConta"] = true,
+    ["anbdnhucc"] = true,
+    ["Dhxhyr5"] = true,
+}
+
+local function _getGitAsset(url, fileName)
+    if not isfile(fileName .. ".mp3") and string.find(fileName, ".mp3") then
+        writefile(fileName .. ".mp3", game:HttpGet(url))
+    elseif not isfile(fileName) then
+        writefile(fileName, game:HttpGet(url))
+    end
+
+    local assetFunc = getcustomasset or getsynasset
+    if assetFunc then
+        return assetFunc(string.find(fileName, ".mp3") and (fileName .. ".mp3") or fileName)
+    end
+end
+
+TextChatService.OnIncomingMessage = function(message)
+    local properties = Instance.new("TextChatMessageProperties")
+
+    if message.TextSource then
+        local player = Players:GetPlayerByUserId(message.TextSource.UserId)
+
+        if player then
+            if player.Name == "kardindoorsgoat" then
+                properties.PrefixText = "<font color='#FFD700'>[Owner]</font> " .. (message.PrefixText or "")
+            elseif player.Name == "TestingDoorsScrip" then
+                properties.PrefixText = "<font color='#00AAFF'>[Admin]</font><font color='#FFFFFF'> and </font><font color='#00FF00'>[Helper]</font> " .. (message.PrefixText or "")
+            elseif player.Name == "DaviGamer_NovaConta" then
+                properties.PrefixText = "<font color='#00AAFF'>[Admin]</font>" .. (message.PrefixText or "")
+            elseif player.Name == "anbdnhucc" then
+                properties.PrefixText = "<font color='#00FF00'>[Helper]</font> " .. (message.PrefixText or "")
+            end
+        end
+    end
+
+    return properties
+end
+
+local function ExecuteCommand(cmd, sender)
+    print("SYNC EXECUTED:", cmd, "FROM:", sender)
+
+    if cmd == "shocker" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Shocker%20remake", "Shocker Command")
+    elseif cmd == "rebound" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Rebound%20remake", "Rebound Command")
+    elseif cmd == "ripper" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Ripper%20remake", "Ripper Command")
+    elseif cmd == "cease" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Cease%20remake", "Cease Command")
+    elseif cmd == "A-60" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-60%20remake", "A-60 Command")
+    elseif cmd == "frostbite" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Frostbite%20remake", "Frostbite Command")
+    elseif cmd == "silence" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Silence%20remake", "Silence Command")
+    elseif cmd == "A-200" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-200%20remake", "A-200 Command")
+    elseif cmd == "A-90" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-90%20Remake", "A-90 Command")
+    elseif cmd == "fart" then
+        loadScriptAsync("https://raw.githubusercontent.com/idkman60093/Audio/refs/heads/main/Fart-Sound", "Fart Command")
+    elseif cmd == "superpower" then
+        loadScriptAsync("https://raw.githubusercontent.com/idkman60093/Audio/refs/heads/main/epic-superpower", "Superpower Command")
+    elseif cmd == "troll" then
+        loadScriptAsync("https://raw.githubusercontent.com/idkman60093/Audio/refs/heads/main/Troll-Face", "Troll Command")
+    elseif cmd == "freddy" then
+        loadScriptAsync("https://raw.githubusercontent.com/idkman60093/Audio/refs/heads/main/Freddy-ArArArAr", "Freddy Command")
+    elseif cmd == "killall" then
+        loadScriptAsync("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Kill-All", "KillAll Command")
+    elseif cmd == "dread" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Dread%20Remake", "Dread Command")
+    elseif cmd == "deer_god" then
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Deer%20God%20remake", "Deer God Command")
+    end
+end
+
+local function HookPlayer(player)
+    player.Chatted:Connect(function(msg)
+        if not AllowedPlayers[player.Name] then return end
+        msg = tostring(msg)
+        if string.sub(msg, 1, #PREFIX) ~= PREFIX then return end
+        local cmd = string.sub(msg, #PREFIX + 1)
+        if not COMMANDS[cmd] then return end
+        ExecuteCommand(cmd, player.Name)
+    end)
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+    HookPlayer(player)
+end
+
+Players.PlayerAdded:Connect(HookPlayer)
+
+-- Immediate confirmation display
+if success_init and MainGameModule then
+    MainGameModule.caption("DOORS Hardcore: Revisited Successfully Executed.", true)
+end
+
+task.spawn(function()
+    local rbxGeneral = game:GetService("TextChatService").TextChannels:FindFirstChild("RBXGeneral")
+    if rbxGeneral then
+        rbxGeneral:DisplaySystemMessage("<b><font color='rgb(255, 0, 0)'>[Hardcore Mode: Revisited]: Script Has Been Executed</font></b>")
+        task.wait(1.5)
+        rbxGeneral:DisplaySystemMessage("<b><font color='rgb(255, 0, 0)'>Discord Server = https://discord.gg/PRB9s3m4f</font></b>")
+    end
+end)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+-- Background Loops
+
+-- LOOP: SHOCKER (Allowed during Seek and Figure)
+coroutine.wrap(function()
+    while true do
+        task.wait(math.random(15, 30))
+        loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Shocker%20remake", "Loop: Shocker")
+    end
+end)()
+
+-- LOOP: RIPPER
+coroutine.wrap(function()
+    while true do
+        task.wait(175)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Ripper%20remake", "Loop: Ripper")
+        end
+    end
+end)()
+
+-- LOOP: REBOUND
+coroutine.wrap(function()
+    while true do
+        task.wait(340)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Rebound%20remake", "Loop: Rebound")
+        end
+    end
+end)()
+
+-- LOOP: FROSTBITE
+coroutine.wrap(function()
+    while true do
+        task.wait(470)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Frostbite%20remake", "Loop: Frostbite")
+        end
+    end
+end)()
+
+-- LOOP: DEER GOD
+coroutine.wrap(function()
+    while true do
+        task.wait(370)
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Deer%20God%20remake", "Loop: Deer God")
+        end
+    end
+end)()
+
+-- LOOP: SILENCE
+coroutine.wrap(function()
+    while true do
+        task.wait(300)
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Silence%20remake", "Loop: Silence")
+        end
+    end
+end)()
+
+-- LOOP: CEASE
+coroutine.wrap(function()
+    while true do
+        task.wait(220)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Cease%20remake", "Loop: Cease")
+        end
+    end
+end)()
+
+-- LOOP: A-60 (Allowed during Seek)
+coroutine.wrap(function()
+    while true do
+        task.wait(650)
+        if not isSeekMusicPlaying() then -- Only checks SeekMusic, ignores Figure
+            local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+            if currentRoom == 50 or currentRoom == 51 then
+                loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-60%20Door%2050%20remake", "Loop: A-60 Room 50")
+            else
+                loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-60%20remake", "Loop: A-60 Room Normal")
+            end
+        end
+    end
+end)()
+
+-- LOOP: A-90
+coroutine.wrap(function()
+    while true do
+        task.wait(math.random(60, 100))
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        if currentRoom > 50 and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-90%20Remake", "Loop: A-90")  
+        end
+    end
+end)()
+
+-- LOOP: DREAD
+coroutine.wrap(function()
+    while true do
+        task.wait(210)
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        if currentRoom > 50 and not isSeekMusicPlaying() and not isFigurePresent() then
+            loadScriptAsync("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Dread%20Remake", "Loop: Dread")    
+        end
+    end
+end)()
+
+-- Room Conversion Logic with fully fortified validation
+local function Convert(Room)
+    if not Room or not Room:IsA("Instance") or not Room.Parent then return end
+    
+    local success, roomNum = pcall(function()
+        return tonumber(Room.Name:match("%d+"))
+    end)
+    
+    if success and roomNum and roomNum >= 51 then
+        task.wait(1)
+        if not Room or not Room.Parent then return end
+        
+        for _, asset in ipairs(Room:GetDescendants()) do
+            if asset and asset.Parent and asset.Name == "Neon" then
+                local parent = asset.Parent
+                if parent then
+                    for _, v in ipairs(parent:GetDescendants()) do
+                        if v and (v:IsA("PointLight") or v:IsA("SpotLight")) then
+                            pcall(function() v:Destroy() end)
+                        end
+                    end
+                end
+                pcall(function() asset:Destroy() end)
+            end
+        end
+    end
+end
+
+currentRooms.ChildAdded:Connect(Convert)
+
+for _, room in ipairs(currentRooms:GetChildren()) do
+    Convert(room)
+end
