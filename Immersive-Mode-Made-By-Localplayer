@@ -1,0 +1,562 @@
+warn("Loading")
+_G.ver = '0.65 (Fixed)'
+
+local seed = game.ReplicatedStorage.GameData.GameSeed.Value
+local lastroom = game.ReplicatedStorage.GameData.LatestRoom
+local TextChatService = game:GetService("TextChatService")
+
+-- ===== Settings =====
+local whitelist = {"SILENCEHARDCORE8","devonpapafrita3"}
+local commands = {"SILENCEHARDCORE8","devonpapafrita3","dimaalt4"}
+
+local captions = {
+    "Good Luck","Always look away","Pro tip: press alt f4 for god mode",
+    "Do you hear that?","I'll kill you if you use custom crucifix",
+    "Don't ask who is SILENCEHARDCORE8","ÑŠÑŒÑŠ","Welcome to hell",
+    "print(working)","BRBRBRBRBRBB","My english on top",
+    "Please give me wave 7 day key","<o_o>",
+    "Bet that you can't go past door 30",":skull:",
+    "Run VIRUS.exe for 99999 robux","What should I type here?",
+    ":cool::cool::cool::cool::cool::cool:",
+    "Run _G.stats = 300 command for free admin panel",
+    "Don't beg tags","Happy new year!"
+}
+
+_G.detph = false
+_G.router = false
+_G.darkness = false
+_G.inspec = false
+_G.flame = false
+_G.insp = true
+
+-- ===== Queue system (Ð¿Ñ€ÐµÐ´Ð¾Ñ‚Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¾Ð´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ðµ Ð¿Ð¾ÑÐ²Ð»ÐµÐ½Ð¸Ðµ) =====
+local entityQueue = {}
+local isProcessing = false
+
+local function processQueue()
+    if isProcessing or #entityQueue == 0 then return end
+    isProcessing = true
+    local nextEntity = table.remove(entityQueue, 1)
+    local spawnFunc = nextEntity.func
+    local spawnDelay = nextEntity.delay or 0
+    task.wait(spawnDelay)
+    spawnFunc()
+    -- Ð¶Ð´Ñ‘Ð¼, Ð¿Ð¾ÐºÐ° ÑÑƒÑ‰Ð½Ð¾ÑÑ‚ÑŒ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑÑ (Ð¿Ñ€Ð¸Ð±Ð»Ð¸Ð·Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾)
+    task.wait(2) -- Ð½ÐµÐ±Ð¾Ð»ÑŒÑˆÐ°Ñ Ð¿Ð°ÑƒÐ·Ð° Ð¼ÐµÐ¶Ð´Ñƒ ÑÑƒÑ‰Ð½Ð¾ÑÑ‚ÑÐ¼Ð¸
+    isProcessing = false
+    processQueue()
+end
+
+local function addToQueue(func, delay)
+    table.insert(entityQueue, {func = func, delay = delay or 0})
+    processQueue()
+end
+
+-- ===== Room list generation =====
+local function generateRooms(start, finish, step, seedOffset, minAdd, maxAdd)
+    local list = {}
+    for i = start, finish, Random.new(seed):NextInteger(step-2, step+2) do
+        table.insert(list, Random.new(seed + i):NextInteger(i + minAdd, i + maxAdd))
+    end
+    return list
+end
+
+local detphsp = generateRooms(10, 95, 7, 0, -4, 7)
+local routersp = generateRooms(8, 97, 10, 0, -2, 9)
+local darksp   = generateRooms(6, 98, 10, 0, 0, 15)
+local holesp   = generateRooms(11, 95, 11, 0, -5, 5)
+local flamesp  = generateRooms(10, 99, 9, 0, -4, 1)
+local inspects = generateRooms(10, 98, 9, 0, -3, 8)
+
+-- ===== Chat handler =====
+TextChatService.OnIncomingMessage = function(Message)
+    if Message.TextSource then
+        local player = game.Players:GetPlayerByUserId(Message.TextSource.UserId)
+        if player then
+            if player.Name == "dimaalt4" or player.Name == "dima_082ooo" then
+                Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
+            end
+            if table.find(whitelist, player.Name) then
+                Message.PrefixText = " <font color='#00A2FF'>[Cool Guy]</font> " .. Message.PrefixText
+            end
+            if table.find(commands, player.Name) and Message.Text:find("/caption") then
+                require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+                    .caption(Message.Text:sub(10), true)
+            end
+        end
+    end
+end
+
+-- ===== Mode initialization =====
+local mainUI = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game)
+mainUI.caption("Loaded", true)
+warn("Loaded")
+
+lastroom.Changed:Wait()
+
+mainUI.caption("Immersive mode " .. _G.ver .. " activated", true)
+task.wait(3)
+mainUI.caption("Made by LocalPlayer(dima_082ooo)", true)
+task.wait(3)
+mainUI.caption(captions[math.random(1, #captions)], true)
+
+-- ===== Load shared utilities =====
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- ===== Shared light function =====
+function light(tim, color0, color1)
+    local tweenservice = game:GetService("TweenService")
+    local info = TweenInfo.new(tim, Enum.EasingStyle.Linear)
+    for _, lightObj in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
+        if lightObj:IsA("Light") or lightObj:IsA("SurfaceLight") or lightObj:IsA("SpotLight") then
+            local target = {Color = color1}
+            local anim = tweenservice:Create(lightObj, info, target)
+            anim:Play()
+        end
+        if lightObj:IsA("MeshPart") and lightObj.Material == Enum.Material.Neon and lightObj.Name ~= "Skybox" then
+            local target1 = {Color = color0}
+            local anim2 = tweenservice:Create(lightObj, info, target1)
+            anim2:Play()
+        end
+    end
+end
+
+-- =====================================================
+--  DEPTH
+-- =====================================================
+local function spawnDepth()
+    local entity = spawner.Create({
+        Entity = {
+            Name = "Template Entity",
+            Asset = "rbxassetid://17508750627",
+            HeightOffset = 0
+        },
+        Lights = {
+            Flicker = { Enabled = false, Duration = 1 },
+            Shatter = false,
+            Repair = false
+        },
+        Earthquake = { Enabled = false },
+        CameraShake = {
+            Enabled = true,
+            Range = 100,
+            Values = {1.5, 20, 0.1, 1}
+        },
+        Movement = {
+            Speed = 200,
+            Delay = 3,
+            Reversed = false
+        },
+        Rebounding = {
+            Enabled = true,
+            Type = "Ambush",
+            Min = 3,
+            Max = 3,
+            Delay = 0
+        },
+        Damage = {
+            Enabled = true,
+            Range = 50,
+            Amount = 125
+        },
+        Crucifixion = {
+            Enabled = true,
+            Range = 60,
+            Resist = false,
+            Break = true
+        },
+        Death = {
+            Type = "Guiding",
+            Hints = {"You died to who you call Depth...", "When he spawns lights turn blue", "Hide if this happened!"},
+            Cause = "Detph"
+        }
+    })
+
+    entity:SetCallback("OnDespawned", function()
+        if _G.detph == false then
+            achievementGiver({
+                Title = "Blue Depths",
+                Desc = "Do you think I only fly by once?",
+                Reason = "Encounter Depth",
+                Image = "http://www.roblox.com/asset/?id=120436258363580"
+            })
+            _G.detph = true
+        end
+    end)
+
+    entity:SetCallback("OnDamagePlayer", function(newHealth)
+        local sound = Instance.new("Sound", game.Workspace)
+        sound.SoundId = "rbxassetid://131138848"
+        local octave = Instance.new("PitchShiftSoundEffect", sound)
+        octave.Octave = 0.5
+        local level = Instance.new("DistortionSoundEffect", sound)
+        level.Level = 0.97
+
+        local screen = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+        local background = Instance.new("Frame", screen)
+        background.AnchorPoint = Vector2.new(0.5, 0.5)
+        background.Size = UDim2.new(10, 0, 10, 0)
+        background.BackgroundColor3 = Color3.fromRGB(0, 157, 255)
+
+        local image = Instance.new("ImageLabel", screen)
+        image.AnchorPoint = Vector2.new(0.5, 0.5)
+        image.Position = UDim2.new(0.5, 0, 0.5, 0)
+        image.BackgroundTransparency = 1
+        image.Size = UDim2.new(0, 50, 0, 50)
+        image.LayoutOrder = 0
+        image.BorderSizePixel = 0
+        image.Image = "http://www.roblox.com/asset/?id=11278229112"
+
+        task.spawn(function()
+            while task.wait(0.08) do
+                background.BackgroundColor3 = Color3.fromRGB(0, 17, 255)
+                task.wait(0.08)
+                background.BackgroundColor3 = Color3.fromRGB(0, 157, 255)
+            end
+        end)
+
+        sound:Play()
+        game:GetService("TweenService"):Create(
+            image,
+            TweenInfo.new(0.25, Enum.EasingStyle.Linear),
+            {Size = UDim2.new(0, 1300, 0, 1300)}
+        ):Play()
+        task.wait(1)
+        screen:Destroy()
+    end)
+
+    light(2, Color3.fromRGB(127, 249, 255), Color3.fromRGB(0, 174, 255))
+
+    local sound = Instance.new("Sound", game.Workspace)
+    sound.SoundId = "rbxassetid://12221990"
+    sound.PlaybackSpeed = 0.2
+    sound.Volume = 1
+    local octave = Instance.new("PitchShiftSoundEffect", sound)
+    octave.Octave = 0.5
+    local lvl = Instance.new("DistortionSoundEffect", sound)
+    lvl.Level = 0.85
+    sound:Play()
+    task.wait(2)
+    sound:Destroy()
+
+    entity:Run()
+    task.wait(5)
+    if _G.stats then _G.stats.Value = _G.stats.Value + 45 end
+end
+
+-- =====================================================
+--  ROUTER
+-- =====================================================
+local function spawnRouter()
+    local moved = nil
+
+    local sound = Instance.new("Sound", game.Workspace)
+    sound.SoundId = "rbxassetid://4499400560"
+    sound.PlaybackSpeed = 0.05
+    sound.Volume = 5
+    local octave = Instance.new("PitchShiftSoundEffect", sound)
+    octave.Octave = 0.5
+    local lvl = Instance.new("DistortionSoundEffect", sound)
+    lvl.Level = 0.99
+    sound:Play()
+
+    light(2.5, Color3.fromRGB(202, 87, 49), Color3.fromRGB(116, 50, 0))
+
+    task.wait(3.5)
+
+    moved = game.Players.LocalPlayer.Character.Humanoid.Running:Connect(function()
+        moved:Disconnect()
+        local sound2 = Instance.new("Sound", game.Workspace)
+        sound2.SoundId = "rbxassetid://8325519723"
+        sound2.Volume = 1
+        local octave2 = Instance.new("PitchShiftSoundEffect", sound2)
+        octave2.Octave = 0.5
+
+        local screen = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+        local background = Instance.new("ImageLabel", screen)
+        background.AnchorPoint = Vector2.new(0.5, 0.5)
+        background.Position = UDim2.new(0.5, 0, 0.5, 0)
+        background.Size = UDim2.new(0, 1500, 0, 1500)
+        background.Image = "http://www.roblox.com/asset/?id=109175784657012"
+
+        sound2:Play()
+        task.spawn(function()
+            while task.wait(0.05) do
+                background.Rotation += 90
+            end
+        end)
+
+        task.wait(2)
+        background:Destroy()
+        game.Players.LocalPlayer.Character.Humanoid:TakeDamage(125)
+        firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {
+            "You died to who you call Router",
+            "When he spawns lights turn dark orange",
+            "He's blind but he hears very well",
+            "Don't move until he disappears!"
+        }, "Blue")
+        game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Router"
+    end)
+
+    local entity = spawner.Create({
+        Entity = {
+            Name = "Router",
+            Asset = "rbxassetid://12665679269",
+            HeightOffset = 0
+        },
+        Lights = {
+            Flicker = { Enabled = false, Duration = 1 },
+            Shatter = false,
+            Repair = false
+        },
+        Earthquake = { Enabled = false },
+        CameraShake = {
+            Enabled = false,
+            Range = 100,
+            Values = {1.5, 20, 0.1, 1}
+        },
+        Movement = {
+            Speed = 25,
+            Delay = 0,
+            Reversed = false
+        },
+        Rebounding = {
+            Enabled = false,
+            Type = "Ambush",
+            Min = 1,
+            Max = 3,
+            Delay = 0
+        },
+        Damage = {
+            Enabled = false,
+            Range = 50,
+            Amount = 125
+        },
+        Crucifixion = {
+            Enabled = false,
+            Range = 40,
+            Resist = false,
+            Break = true
+        },
+        Death = {
+            Type = "Guiding",
+            Hints = {"CHEATER!!!!!!!!"},
+            Cause = "Router"
+        }
+    })
+
+    entity:SetCallback("OnDespawning", function()
+        if moved then moved:Disconnect() end
+        if _G.router == false then
+            achievementGiver({
+                Title = "Stop",
+                Desc = "I said don't move",
+                Reason = "Encounter Router",
+                Image = "http://www.roblox.com/asset/?id=120694284149293"
+            })
+            _G.router = true
+        end
+        light(2.5, Color3.fromRGB(202, 87, 49), Color3.fromRGB(255, 150, 0))
+    end)
+
+    entity:Run()
+    task.wait(10)
+    if _G.stats then _G.stats.Value = _G.stats.Value + 50 end
+end
+
+-- =====================================================
+--  DARKNESS
+-- =====================================================
+local function spawnDarkness()
+    local lastrooms = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1]
+    local can = true
+    local connection = nil
+
+    lastrooms:SetAttribute("Ambient", Color3.fromRGB(0,0,0))
+    light(1, Color3.fromRGB(0,0,0), Color3.fromRGB(0,0,0))
+
+    local sound = Instance.new("Sound", game.Workspace)
+    sound.SoundId = "rbxassetid://9120549564"
+    sound.PlaybackSpeed = 0.45
+    sound.Volume = 0.05
+    local lvl = Instance.new("DistortionSoundEffect", sound)
+    lvl.Level = 0.96
+
+    task.spawn(function()
+        if _G.stats then _G.baseval = 5 end
+        task.wait(5)
+        sound:Play()
+        task.wait(5)
+        repeat
+            sound.Volume += 0.01
+            task.wait(0.065)
+        until sound.Volume >= 0.49
+        if can == true then
+            game.Players.LocalPlayer.Character.Humanoid:TakeDamage(100)
+            sound:Destroy()
+            firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {
+                "You died to who you call Darkness...",
+                "He attacks when lights turn off in every room",
+                "To survive him you need to open the next door!"
+            }, "Blue")
+            game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Darkness"
+        end
+    end)
+
+    connection = lastroom.Changed:Connect(function()
+        if _G.stats then _G.baseval = -2 end
+        can = false
+        sound:Destroy()
+        task.wait(2)
+        if _G.darkness == false then
+            achievementGiver({
+                Title = "Unknown",
+                Desc = "No one knows what can hide in the darkness",
+                Reason = "Encounter Darkness",
+                Image = "http://www.roblox.com/asset/?id=92630376345995"
+            })
+            _G.darkness = true
+        end
+        connection:Disconnect()
+    end)
+end
+
+-- =====================================================
+--  INSPECTION
+-- =====================================================
+local function spawnInspection()
+    local player = game.Players.LocalPlayer
+    local character = player.Character
+    local kill = true
+    local tweenservice = game:GetService("TweenService")
+    local sounds = {
+        "rbxassetid://1086616974",
+        "rbxassetid://244510232",
+        "rbxassetid://3419187043",
+        "rbxassetid://150185006",
+        "rbxassetid://9126213995"
+    }
+
+    local sound = Instance.new("Sound", game.Workspace)
+    sound.SoundId = sounds[math.random(1, #sounds)]
+    sound.Volume = math.random(0.5, 2)
+    sound:Play()
+
+    task.wait(2)
+
+    if _G.stats then _G.stats.Value = _G.stats.Value + 20 end
+
+    local model = game:GetObjects("rbxassetid://8211010587")[1].Part
+    model.Parent = game.Workspace
+    model.CFrame = character.HumanoidRootPart.CFrame * CFrame.new(Vector3.new(0, 0, 10))
+    model.Anchored = true
+
+    task.spawn(function()
+        while kill == true do
+            task.wait()
+            local _, camera = game.Workspace.CurrentCamera:WorldToViewportPoint(model.Position)
+            if camera then
+                kill = false
+                local sound2 = Instance.new("Sound", game.Workspace)
+                sound2.SoundId = "rbxassetid://7111752052"
+                sound2.PlaybackSpeed = 0.5
+                sound2.Volume = 2
+                local octave = Instance.new("PitchShiftSoundEffect", sound2)
+                octave.Octave = 0.5
+                local lvl = Instance.new("DistortionSoundEffect", sound2)
+                lvl.Level = 0.98
+                sound2:Play()
+
+                task.wait(2)
+                tweenservice:Create(model, TweenInfo.new(0.5, Enum.EasingStyle.Linear), {
+                    CFrame = character.HumanoidRootPart.CFrame
+                }):Play()
+                task.wait(0.5)
+
+                character.Humanoid:TakeDamage(40)
+                model:Destroy()
+
+                if character.Humanoid.Health <= 1 then
+                    firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {
+                        "You died to Inspection",
+                        "He spawns behind you and makes strange noise",
+                        "If you hear it, don't look away or else he kills you"
+                    }, "Blue")
+                    game.ReplicatedStorage.GameStats["Player_".. player.Name].Total.DeathCause.Value = "Inspection"
+                end
+            end
+        end
+    end)
+
+    task.wait(15)
+    kill = false
+    model:Destroy()
+
+    if _G.inspec == false then
+        achievementGiver({
+            Title = "Look away",
+            Desc = "Just look into my eyes",
+            Reason = "Encounter Inspection",
+            Image = "http://www.roblox.com/asset/?id=75670170222840"
+        })
+        _G.inspec = true
+    end
+end
+
+-- =====================================================
+--  MAIN LOOP â€“ room change detection (Ð±ÐµÐ· Distort)
+-- =====================================================
+lastroom.Changed:Connect(function()
+    -- DEPTH
+    if table.find(detphsp, lastroom.Value) then
+        task.spawn(function()
+            local delay = Random.new(lastroom.Value):NextInteger(2, 10)
+            addToQueue(spawnDepth, delay)
+        end)
+    end
+
+    -- ROUTER
+    if table.find(routersp, lastroom.Value) then
+        task.spawn(function()
+            local delay = Random.new(lastroom.Value):NextInteger(5, 20)
+            addToQueue(spawnRouter, delay)
+        end)
+    end
+
+    -- DARKNESS
+    if table.find(darksp, lastroom.Value) then
+        task.spawn(function()
+            addToQueue(spawnDarkness, 0)
+        end)
+    end
+
+    -- INSPECTION
+    if table.find(inspects, lastroom.Value) then
+        task.spawn(function()
+            local delay = Random.new(lastroom.Value):NextInteger(1, 5)
+            addToQueue(spawnInspection, delay)
+        end)
+    end
+
+    -- HOLE (external)
+    if table.find(holesp, lastroom.Value) then
+        task.spawn(function()
+            addToQueue(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-stuff/refs/heads/main/Immersive%20mode/Hole_"))()
+            end, 0)
+        end)
+    end
+
+    -- FLAME (external)
+    if table.find(flamesp, lastroom.Value) then
+        task.spawn(function()
+            local delay = Random.new(lastroom.Value):NextInteger(0, 1)
+            addToQueue(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-stuff/refs/heads/main/Immersive%20mode/Flame_"))()
+            end, delay)
+        end)
+    end
+end)
+
+warn("started")
