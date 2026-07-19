@@ -522,7 +522,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/r
 end)
 
 Section:NewButton("Add Secret Entity", "Credit to Rip_Silence", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Secret%20Entity"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Him-Entity-Main.lua"))()
 end)
 
 Section:NewButton("Game File Logger", "Made By Guestly (Celestian)", function()
