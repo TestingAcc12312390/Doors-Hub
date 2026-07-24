@@ -1,0 +1,325 @@
+-- Global variable check using the shared table to persist across executions
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+if shared.UnhingedModeExecuted then
+    local MainUI = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainUI")
+    require(MainUI.Initiator.Main_Game).caption("Executed 2 times! Returning...", true)
+    return -- Stops the script right here so it doesn't run again
+else
+    shared.UnhingedModeExecuted = true
+end
+
+-- Continuing with your door 0 check
+local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+if currentRoom > 0 then
+    LocalPlayer.Character.Humanoid:TakeDamage(1000)
+    game:GetService("ReplicatedStorage").GameStats["Player_".. LocalPlayer.Name].Total.DeathCause.Value = "You must execute at door 0!"
+end
+
+local TextChatService = game:GetService("TextChatService")
+local _TweenService = game:GetService("TweenService")
+local _SoundService = game:GetService("SoundService")
+local _Debris = game:GetService("Debris")
+local workspaceService = game:GetService("Workspace")
+local currentRooms = workspaceService:WaitForChild("CurrentRooms")
+
+local PREFIX = "/"
+local COMMANDS = {
+    trollface = true,
+    virus = true,
+    god = true
+}
+
+local AllowedPlayers = {
+    ["TestingDoorsScrip"] = true,
+    ["ItzzGabbbb"] = true
+}
+
+local function _getGitAsset(url, fileName)
+    if not isfile(fileName .. ".mp3") and string.find(fileName, ".mp3") then
+        writefile(fileName .. ".mp3", game:HttpGet(url))
+    elseif not isfile(fileName) then
+        writefile(fileName, game:HttpGet(url))
+    end
+
+    local assetFunc = getcustomasset or getsynasset
+    return assetFunc(string.find(fileName, ".mp3") and (fileName .. ".mp3") or fileName)
+end
+
+TextChatService.OnIncomingMessage = function(message)
+    local properties = Instance.new("TextChatMessageProperties")
+
+    if message.TextSource then
+        local player = Players:GetPlayerByUserId(message.TextSource.UserId)
+
+        if player then
+            if player.Name == "TestingDoorsScrip" then
+                properties.PrefixText = "<font color='#FFD700'>[Owner]</font> " .. (message.PrefixText or "")
+            elseif player.Name == "ItzzGabbbb" then
+                properties.PrefixText = "<font color='#00AAFF'>[Admin]</font> " .. (message.PrefixText or "")
+            end
+        end
+    end
+
+    return properties
+end
+
+local function ExecuteCommand(cmd, sender)
+    print("SYNC EXECUTED:", cmd, "FROM:", sender)
+
+    if cmd == "trollface" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Trollface-Entity"))()
+    elseif cmd == "virus" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Virus-Entity"))()
+    elseif cmd == "god" then
+        loadstring(game:HttpGet("https://pastefy.app/lAn7TCVE/raw"))()
+    end
+end
+
+local function HookPlayer(player)
+    player.Chatted:Connect(function(msg)
+        if not AllowedPlayers[player.Name] then return end
+        msg = tostring(msg)
+        if string.sub(msg, 1, #PREFIX) ~= PREFIX then return end
+        local cmd = string.sub(msg, #PREFIX + 1)
+        if not COMMANDS[cmd] then return end
+        ExecuteCommand(cmd, player.Name)
+    end)
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+    HookPlayer(player)
+end
+
+Players.PlayerAdded:Connect(HookPlayer)
+
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(0, 153, 0)'>[Unhinged Mode]: Script Has Been Executed/Loaded</font></b>")
+
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Unhinged Mode Successfully Executed", true)
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:connect(function()
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+--[[ 
+    MANUAL PIVOT ENTITY: OVERKILL
+    Full Map Logic: FigureNodes (1-22+) with Kill Logic
+]]--
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- ====== Configuration ======
+local entityspeed = 50 
+local killRange = 15 -- Distance in studs to trigger death
+local entityName = "Ravage"
+local assetId = "rbxassetid://17038754475"
+
+-- ====== Setup Model ======
+local function LoadEntity()
+    local success, objects = pcall(function()
+        return game:GetObjects(assetId)
+    end)
+    if success and objects and objects[1] then
+        local model = objects[1]
+        model.Name = entityName
+        model.Parent = workspace
+        return model
+    end
+    return nil
+end
+
+local entity = LoadEntity()
+if not entity then return end
+
+for _, v in ipairs(entity:GetDescendants()) do
+    if v:IsA("BasePart") then
+        v.Transparency = 1
+        v.Anchored = true
+        v.CanCollide = false
+    end
+end
+
+-- ====== Movement Core ======
+function EntityMoveTo(targetCFrame)
+    if not entity or not entity.Parent then return end
+    local reached = false
+    local connection
+    
+    connection = RunService.Stepped:Connect(function(_, step)
+        if not entity or not entity.Parent then 
+            if connection then connection:Disconnect() end
+            reached = true 
+            return 
+        end
+        
+        local pivot = entity:GetPivot()
+        local difference = (targetCFrame.Position - pivot.Position)
+        
+        if difference.Magnitude > 0.5 then
+            local unit = difference.Unit
+            entity:PivotTo(pivot + unit * math.min(step * entityspeed, difference.Magnitude))
+        else
+            connection:Disconnect()
+            reached = true
+        end
+    end)
+    
+    local start = tick()
+    repeat RunService.Stepped:Wait() until reached or (tick() - start > 15)
+    if connection then connection:Disconnect() end
+end
+
+-- ====== Spawn Logic ======
+local function spawnAtExit()
+    local room50 = workspace.CurrentRooms:FindFirstChild("50")
+    if room50 and room50:FindFirstChild("RoomExit") then
+        entity:PivotTo(room50.RoomExit.CFrame + Vector3.new(0, 5, 0))
+    else
+        entity:PivotTo(CFrame.new(841.8, 10, -468.3))
+    end
+end
+
+spawnAtExit()
+
+-- ====== Kill Logic (Active Collision Check) ======
+local isDead = false
+task.spawn(function()
+    while RunService.Heartbeat:Wait() and entity and entity.Parent do
+        local character = LocalPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") and not isDead then
+            local root = character.HumanoidRootPart
+            local distance = (entity:GetPivot().Position - root.Position).Magnitude
+            
+            -- Check distance and if the player is NOT hiding
+            if distance < killRange and character:GetAttribute("Hiding") ~= true then
+                isDead = true
+                character.Humanoid.Health = 0
+                print("Ravage eliminated the player!")
+                
+                -- Reset death toggle after respawn
+                task.delay(5, function() isDead = false end)
+            end
+        end
+    end
+end)
+
+-- ====== Pathing Logic (FigureNodes) ======
+local function patrol()
+    local pathFolder = workspace:FindFirstChild("FigureNodes", true)
+    
+    if pathFolder then
+        local nodes = pathFolder:GetChildren()
+        
+        table.sort(nodes, function(a, b)
+            local numA = tonumber(a.Name:match("%d+")) or 0
+            local numB = tonumber(b.Name:match("%d+")) or 0
+            return numA < numB
+        end)
+
+        for _, node in ipairs(nodes) do
+            if not entity or not entity.Parent then return end
+            if node:IsA("BasePart") then
+                EntityMoveTo(node.CFrame + Vector3.new(0, 4, 0))
+            end
+        end
+    else
+        task.wait(1)
+    end
+end
+
+-- ====== Main Loop ======
+task.spawn(function()
+    while entity and entity.Parent do
+        patrol()
+        task.wait(0.1)
+    end
+end)
+
+-- Cleanup on Room Change
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+    if entity then 
+        entity:Destroy() 
+    end
+end)
+end
+end)
+
+local cue2 = Instance.new("Sound")
+ cue2.Parent = game.Workspace
+ cue2.Name = "Spawn"
+ cue2.SoundId = "rbxassetid://117248295851911"
+ cue2.Volume = 2.5
+ cue2.PlaybackSpeed = 1
+ cue2:Play()
+
+local achievementGiver1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Achivements/refs/heads/main/Voorpr0"))()
+
+achievementGiver1({
+    Title = "Whos gonna get Craziness??",
+    Desc = "Weird looking mode ahh",
+    Reason = "Execute Unhinged Mode Script",
+    Image = "rbxassetid://15103292853"
+})
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+local caption = LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 255, 255)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Unhinged Mode Initiated", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Made by Rip_Silence (The Owner Of This Mode)", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credit to the Owner for the Trollface Entity Model", true)
+task.wait(2.5)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits to ItzzGabbbb for making Virus Model, Ravage Model & also the God Is Coming Script", true)
+task.wait(2.5)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Can u give me 67 days to repair an oxygen machine?, true)
+
+coroutine.wrap(function()
+    while true do
+        task.wait(180)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Virus-Entity"))()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while true do
+        task.wait(60)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Trollface-Entity"))()
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while true do
+        task.wait(300)
+        
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+        
+        local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
+        local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
+        
+        if not bannedRooms[currentRoom] and not isSeekChase then
+            loadstring(game:HttpGet("https://pastefy.app/lAn7TCVE/raw"))()
+        end
+    end
+end)()
