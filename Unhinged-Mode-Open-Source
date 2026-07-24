@@ -1,15 +1,3 @@
--- Global variable check using the shared table to persist across executions
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
-if shared.UnhingedModeExecuted then
-    local MainUI = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainUI")
-    require(MainUI.Initiator.Main_Game).caption("Executed 2 times! Returning...", true)
-    return -- Stops the script right here so it doesn't run again
-else
-    shared.UnhingedModeExecuted = true
-end
-
 -- Continuing with your door 0 check
 local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
 if currentRoom > 0 then
