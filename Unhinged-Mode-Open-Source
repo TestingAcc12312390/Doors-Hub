@@ -28,7 +28,8 @@ local PREFIX = "/"
 local COMMANDS = {
     trollface = true,
     virus = true,
-    god = true
+    god = true,
+    ["B-444"] = true
 }
 
 local AllowedPlayers = {
@@ -74,6 +75,8 @@ local function ExecuteCommand(cmd, sender)
         loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Virus-Entity"))()
     elseif cmd == "god" then
         loadstring(game:HttpGet("https://pastefy.app/lAn7TCVE/raw"))()
+    elseif cmd == "B-444" then
+        loadstring(game:HttpGet("https://pastefy.app/9dkXpSyy/raw"))()
     end
 end
 
@@ -272,9 +275,9 @@ require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Made by Rip_S
 task.wait(2.5)
 require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credit to the Owner for the Trollface Entity Model", true)
 task.wait(2.5)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits to ItzzGabbbb for making Virus Model, Ravage Model & also the God Is Coming Script", true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits to ItzzGabbbb for making Virus Model, Ravage Model, B-444 entity script & also the God Is Coming Script", true)
 task.wait(2.5)
-require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Can u give me 67 days to repair an oxygen machine?", true)
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Did u know that Michael Jackson Created the 67 Meme On 1972? Holy Time Traveler", true)
 
 coroutine.wrap(function()
     while true do
