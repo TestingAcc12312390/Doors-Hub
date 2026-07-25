@@ -278,7 +278,7 @@ require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Can u give me
 
 coroutine.wrap(function()
     while true do
-        task.wait(130)
+        task.wait(190)
         
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         local currentRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
@@ -294,7 +294,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        task.wait(250)
+        task.wait(290)
         
         local isSeekChase = workspace:FindFirstChild("SeekMovingNewClone", true) ~= nil
         local bannedRooms = { [49] = true, [50] = true, [51] = true, [99] = true, [100] = true }
