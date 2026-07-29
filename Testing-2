@@ -1,13 +1,13 @@
 wait(0) 
-game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V33 (Beta) Loaded!</font></b>")
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V34 (Beta) Loaded!</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Made By Rip_Silence (#idkman06483)</font></b>")
 wait(1.5)
-game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to RealblueYT for the Loading UI & The Sign Text In Chat</font></b>")
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Credit to Gemini for the Loading UI & Credit to RealblueYT for The Sign Text In Chat</font></b>")
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TwiRwal/TwiWare/main/uilib.lua"))()
 
-local Window = Library.CreateLib("⭐Doors Modes Hub V33⭐ (Beta)", "BloodTheme")
+local Window = Library.CreateLib("⭐Doors Modes Hub V34⭐ (Beta)", "BloodTheme")
 
 local Tab = Window:NewTab("🔪Modes🔪")
 
@@ -69,12 +69,12 @@ Section:NewButton("Fear Mode V2", "Made By Reboundplayz", function()
 loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Doors%20Fear%20Mode"))()
 end)
 
-Section:NewButton("Fog Mode (Released)", "Made By Vuivuiviu2", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Ganyu06112/Fog-Mode/refs/heads/main/Fog-Mode.lua"))()
+Section:NewButton("Corrupted Mode", "Made by Junin_320hy", function()
+loadstring(game:HttpGet("https://github.com/junin724/Doors-modes/raw/refs/heads/main/Corrupted%20mode%20By%20me"))()
 end)
 
-Section:NewButton("Wer Mode (Homemade Mode)", "Made by RealblueYT", function()
-loadstring(game:HttpGet("https://arch-http.vercel.app/files/Projectwermode"))()
+Section:NewButton("Fog Mode (Released)", "Made By Vuivuiviu2", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Ganyu06112/Fog-Mode/refs/heads/main/Fog-Mode.lua"))()
 end)
 
 Section:NewButton("Impossible Mode V1.8 (Fixed)", "Fixed by Voorpr0 & Nowhywwhat & Guestly & Vuivuiviu2", function()
@@ -89,8 +89,8 @@ Section:NewButton("Water Rises Mode (Locked)", "Original Credit to Oof & Credit 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
-Section:NewButton("Immersive Mode (Fixed)", "Made by LocalPlayer & idk who fixed it lol", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Doors-Hub/refs/heads/main/Immersive-Mode-Made-By-Localplayer"))()
+Section:NewButton("Immersive Mode (Fixed)", "Made by LocalPlayer", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/fixedImmkersivemodeabitbutbyes"))()
 end)
 
 Section:NewButton("Nightmare Mode", "Made by Kodbol & Remade by Reboundplayz", function()
@@ -367,8 +367,8 @@ Section:NewButton("Terror Mode", "Working Perfectly", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Teilsthebfdifan/Modhub-assets/refs/heads/main/TerrorModeOBF.lua"))()
 end)
 
-Section:NewButton("Hardcore Mode (Remake)", "Remake by RealblueYT", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/rrealblueyt-oss/Hradcore-by-noonies-remak/refs/heads/main/Hradcore%20remakes%20by%20RealblueYT"))()
+Section:NewButton("Hardcore Mode (Remake)", "Remake by Junin_320hy", function()
+loadstring(game:HttpGet("https://github.com/junin724/Doors-modes/raw/refs/heads/main/Hardcore%2520mode%2520remake"))()
 end)
 
 Section:NewButton("Endless Mode (Remake)", "Remaked by Chu be te liet", function()
@@ -449,6 +449,18 @@ getgenv().Config = {
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/6e87698669de88a8f81d6348ce368b73.lua"))()
 end)
 
+Section:NewButton("Verity Script", "Made by ItzzGabbbb (Minecraft Mod btw)", function()
+loadstring(game:HttpGet("https://pastefy.app/sqdSTwKt/raw"))()
+end)
+
+Section:NewButton("Script Mode V1 (Released)", "Made By Munciseek", function()
+loadstring(game:HttpGet("https://illunox.qzz.io/api/scripts/42b63e919ea74a999f2fec6ffdc02de1"))()
+end)
+
+Section:NewButton("Generator Hard Mode", "Made by Indexell", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/IdkMyNameLoll/PublicScripts/refs/heads/main/HardGenIThinkReupload"))()
+end)
+
 Section:NewButton("Chill Light (READ THE DESCRIPTION)", "You need to die first and then you can see the chill light", function()
 loadstring(game:HttpGet('https://pastebin.com/raw/nCYbqkAb'))()
 end)
@@ -522,7 +534,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/r
 end)
 
 Section:NewButton("Add Secret Entity", "Credit to Rip_Silence", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Secret%20Entity"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Him-Entity-Main.lua"))()
 end)
 
 Section:NewButton("Game File Logger", "Made By Guestly (Celestian)", function()
@@ -795,7 +807,7 @@ end
 end)()
 end)
 
-Section:NewButton("Script Mode (Released)", "ButtonInfo", function()
+Section:NewButton("Script Mode (Remake)", "Made by Reboundplayz", function()
 loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Script%20Mode"))()
 end)
 
@@ -882,7 +894,7 @@ Section:NewButton("Joy Hub", "ButtonInfo", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Joy-hub-93382"))()
 end)
 
-Section:NewButton("Guestly's Doors Modes Hub V2", "Credit to Guestly (Celestian)", function()
+Section:NewButton("Guestly's Doors Modes Hub V3", "Credit to Guestly (Celestian)", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/GUESTLY-DOORS-MODE-HUB"))()
 end)
 
@@ -979,7 +991,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Custom-Enti
 end)
 
 Section:NewButton("Smiler Spawner (Remake)", "ButtonInfo", function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Smiler-111615"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rrealblueyt-oss/Smiler/refs/heads/main/Smi6"))()
 end)
 
 Section:NewButton("Rebound Spawner (Remake)", "ButtonInfo", function()
@@ -1030,6 +1042,10 @@ end)
 
 Section:NewButton("Daze Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Daze11"))()
+end)
+
+Section:NewButton("God Spawner", "Made by ItzzGabbbb", function()
+loadstring(game:HttpGet("https://pastefy.app/lAn7TCVE/raw"))()
 end)
 
 Section:NewButton("R-40 Spawner", "ButtonInfo", function()
@@ -1094,6 +1110,10 @@ Section:NewButton("Cease (But Bad) Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KendrickFan59/privatev2/refs/heads/main/ceaser"))()
 end)
 
+Section:NewButton("Virus Spawner", "Entity Model Made by ItzzGabbb", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Virus-Entity"))()
+end)
+
 Section:NewButton("Fear Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Fear-Nightmare-Mode"))()
 end)
@@ -1110,8 +1130,16 @@ Section:NewButton("Hiss Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/rrealblueyt-oss/Hiss/refs/heads/main/obfuscated_script-1769948042346.lua.txt"))()
 end)
 
+Section:NewButton("B-444 Spawner", "Made by ItzzGabbbb", function()
+loadstring(game:HttpGet("https://pastefy.app/9dkXpSyy/raw"))()
+end)
+
 Section:NewButton("Ruinator Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastefy.app/zlwFiRuW/raw"))()
+end)
+
+Section:NewButton("Trollface Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Trollface-Entity"))()
 end)
 
 Section:NewButton("Rebound Spawner (READ THE DESCRIPTION)", "Execute Rebound Spawner at door 0 and open the next door", function()
@@ -1210,7 +1238,7 @@ Hints = {
 "You died to ...",
 "I Dont remember HIM here..."
 },
-Cause = "Z88"
+Cause = "Z-88"
 }
 })
 
@@ -1247,6 +1275,14 @@ end)
 
 Section:NewButton("Fear Spawner (Remake)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/nightmare/refs/heads/main/Fear"))()
+end)
+
+Section:NewButton("Distort Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-stuff/refs/heads/main/Immersive%20mode/Distort"))()
+end)
+
+Section:NewButton("Fabric Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-stuff/refs/heads/main/Immersive%20mode/Fabricility"))()
 end)
 
 Section:NewButton("Black Spawner", "ButtonInfo", function()
@@ -1572,6 +1608,14 @@ Section:NewButton("Blackout Mode", "Made By Rip_Silence", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Blackout-Mode-Main.lua"))()
 end)
 
+Section:NewButton("Unhinged Mode", "Made By Rip_Silence", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Unhinged-Mode-Main.lua"))()
+end)
+
+Section:NewButton("Infection Mode", "Made By Leo -LXD-", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Doors-Hub/refs/heads/main/Infection-Mode-Made-By-Leo"))()
+end)
+
 Section:NewButton("Broken Mode", "Made by TheDarkMan", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TheDarkMan1334/Broken-mode/refs/heads/main/BrokenMode%20Version%201.8%20Fix"))()
 end)
@@ -1616,6 +1660,10 @@ Section:NewButton("Super Packed Mode", "Credit to Zunxd", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Junbbinopro/Doors-sieu-don-mode/refs/heads/main/Modeee"))()
 end)
 
+Section:NewButton("Hardcore Mode (Degenerate)", "Made by RealblueYT", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rrealblueyt-oss/Hardcore-degenerate/refs/heads/main/hardcore%20degenerate.txt"))()
+end)
+
 Section:NewButton("Fragmented Mode Alpha (Recreation)", "Made by Hello Im Rippah", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/brylesantos38-cell/FragmentedModeAlphaRecreation/refs/heads/main/obfuscated_script-1783648290063.lua.txt"))()
 end)
@@ -1632,24 +1680,30 @@ local Tab = Window:NewTab("🤔Update Logs🤔")
 
 local Section = Tab:NewSection("---Update Logs---")
 
-local Section = Tab:NewSection("1. Updated Fragmented Mode Alpha (Recreation) In Modes 2 Section")
-local Section = Tab:NewSection("2. Updated Impossible Mode In Modes Section")
-local Section = Tab:NewSection("3. Updated Fear Mode In Modes Section")
-local Section = Tab:NewSection("4. Added Ruinator Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("5. Added Gubby Tool In Custom Item Section")
-local Section = Tab:NewSection("6. Added Immersive Mode (Fixed) In Modes Section")
-local Section = Tab:NewSection("7. Removed Hard Mode V4 (Recaptured) in Modes Section")
-local Section = Tab:NewSection("8. Added Extremely Mode In Modes 2 Section")
-local Section = Tab:NewSection("9. Added Impossible Mode (Remastered) In Modes 2 Section")
-local Section = Tab:NewSection("10. Added Eyes Mode In Modes 2 Section")
-local Section = Tab:NewSection("11. Added IndiHome Script (Troll) In Extra Section")
-local Section = Tab:NewSection("12. Added Disconnect Game In Extra Section")
+local Section = Tab:NewSection("1. Updated Guestly's Doors Modes Hub V3 In Other Scripts Section")
+local Section = Tab:NewSection("2. Updated Smiler Spawner (Remake) In Entity Spawner Section")
+local Section = Tab:NewSection("3. Updated Hardcore Reignited Mode (Recreated) In Modes 2 Section")
+local Section = Tab:NewSection("4. Updated Hardcore Mode (Remake) In Modes Section")
+local Section = Tab:NewSection("5. Added Distort Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("6. Added Fabric Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("7. Added Hardcore Mode (Degenerate) In Modes 2 Section")
+local Section = Tab:NewSection("8. Added Verity Script In Extra Section")
+local Section = Tab:NewSection("9. Added God Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("10. Replaced Wer Mode to Corrupted Mode In Modes Section")
+local Section = Tab:NewSection("11. Added Trollface Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("12. Added Virus Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("13. Added Generator Hard Mode In Extra Section")
+local Section = Tab:NewSection("14. Added Unhinged Mode In Modes 2 Section")
+local Section = Tab:NewSection("15. Added B-444 Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("16. Added Script Mode V1 In Extra Section")
+local Section = Tab:NewSection("17. Added Infection Mode In Modes 2 Section")
 
 local Tab = Window:NewTab("😄Credits😄")
 
 local Section = Tab:NewSection("---Credits---")
 local Section = Tab:NewSection("Hub Made by Rip_Silence")
-local Section = Tab:NewSection("Credit to Everyone")
+local Section = Tab:NewSection("This hub is inspired from Greed_GamingMobile's hub")
+local Section = Tab:NewSection("Credit to You! (For Executing My Hub)")
 
 local Tab = Window:NewTab("Toggle Gui")
 local Section = Tab:NewSection("Toggle Gui")
@@ -1687,7 +1741,7 @@ local intro = shut:Clone()
 intro.Parent = mainUI
 intro.Name = "Fragment Mode Intro"
 intro.Visible = true
-intro.Text = "⭐Doors Modes Hub V33⭐"
+intro.Text = "⭐Doors Modes Hub V34⭐"
 intro.TextTransparency = 0
 
 local underlinePart = intro:FindFirstChild("Underline")
