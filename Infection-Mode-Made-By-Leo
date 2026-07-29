@@ -1,0 +1,1535 @@
+-- Ã°Å¸Å’â€˜ DARK DOORS + Ã°Å¸â€Â¦ RED FLASHLIGHT + Ã°Å¸â€˜ÂÃ¯Â¸Â STALKER + Ã°Å¸â€˜ÂÃ¯Â¸Â SHOCKREAPER + Ã°Å¸Â¦  INFECTED SILENCE
+-- Ã¢Å“â€¦ FULL PACK
+-- Ã¢Å“â€¦ TODOS OS COMANDOS
+-- Ã¢Å“â€¦ TODOS OS SONS
+-- Ã¢Å“â€¦ DELTA EXECUTOR
+
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local UIS = game:GetService("UserInputService")
+local SoundService = game:GetService("SoundService")
+local StarterGui = game:GetService("StarterGui")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local head = character:WaitForChild("Head")
+
+-- =====================================================
+-- Ã°Å¸Å’â€˜ ESCURIDÃƒÆ’O
+-- =====================================================
+
+pcall(function()
+
+	for _,v in pairs(Lighting:GetChildren()) do
+
+		if v:IsA("Atmosphere")
+		or v:IsA("BloomEffect")
+		or v:IsA("ColorCorrectionEffect")
+		or v:IsA("SunRaysEffect") then
+
+			v:Destroy()
+		end
+	end
+end)
+
+Lighting.GlobalShadows = true
+Lighting.Brightness = 1
+Lighting.ExposureCompensation = -0.1
+
+Lighting.Ambient = Color3.fromRGB(45,45,45)
+Lighting.OutdoorAmbient = Color3.fromRGB(35,35,35)
+
+Lighting.ClockTime = 1
+
+Lighting.FogStart = 35
+Lighting.FogEnd = 220
+Lighting.FogColor = Color3.fromRGB(40,40,40)
+
+local color = Instance.new("ColorCorrectionEffect")
+color.Parent = Lighting
+
+color.Brightness = -0.01
+color.Contrast = 0.04
+color.Saturation = -0.01
+color.TintColor = Color3.fromRGB(220,220,220)
+
+-- =====================================================
+-- Ã°Å¸â€Â¦ FLASHLIGHT GLOBAL
+-- =====================================================
+
+pcall(function()
+
+	head:FindFirstChild("DoorsRedFlashlight"):Destroy()
+
+	if player.PlayerGui:FindFirstChild("DoorsFlashlightGui") then
+		player.PlayerGui.DoorsFlashlightGui:Destroy()
+	end
+end)
+
+local flashLight = Instance.new("SpotLight")
+flashLight.Name = "DoorsRedFlashlight"
+flashLight.Parent = head
+
+flashLight.Color = Color3.fromRGB(255,0,0)
+flashLight.Brightness = 4
+flashLight.Range = 55
+flashLight.Angle = 95
+flashLight.Enabled = true
+
+local flashlightEnabled = true
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "DoorsFlashlightGui"
+gui.ResetOnSpawn = false
+gui.Parent = player.PlayerGui
+
+local button = Instance.new("ImageButton")
+button.Parent = gui
+
+button.Size = UDim2.new(0,82,0,82)
+button.Position = UDim2.new(0.82,0,0.16,0)
+
+button.BackgroundColor3 = Color3.fromRGB(15,15,15)
+button.Image = "rbxassetid://107954450051744"
+button.BorderSizePixel = 0
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1,0)
+corner.Parent = button
+
+local stroke = Instance.new("UIStroke")
+stroke.Parent = button
+stroke.Thickness = 4
+stroke.Color = Color3.fromRGB(255,235,200)
+
+-- Ã°Å¸â€Å  SOMS FLASHLIGHT
+local onSound = Instance.new("Sound")
+onSound.SoundId = "rbxassetid://133628145763554"
+onSound.Volume = 2
+onSound.Parent = head
+
+local offSound = Instance.new("Sound")
+offSound.SoundId = "rbxassetid://89857156580830"
+offSound.Volume = 2
+offSound.Parent = head
+
+local function ToggleFlashlight()
+
+	flashlightEnabled = not flashlightEnabled
+	flashLight.Enabled = flashlightEnabled
+
+	if flashlightEnabled then
+
+		onSound:Play()
+
+		button.BackgroundColor3 = Color3.fromRGB(15,15,15)
+
+	else
+
+		offSound:Play()
+
+		button.BackgroundColor3 = Color3.fromRGB(35,35,35)
+	end
+end
+
+button.MouseButton1Click:Connect(ToggleFlashlight)
+
+UIS.InputBegan:Connect(function(input,gp)
+
+	if gp then
+		return
+	end
+
+	if input.KeyCode == Enum.KeyCode.F then
+		ToggleFlashlight()
+	end
+end)
+
+-- =====================================================
+-- Ã°Å¸Â¦  INFECTION MOD MESSAGES
+-- =====================================================
+
+local caption = require(player.PlayerGui.MainUI.Initiator.Main_Game)
+
+caption.caption("infection mod activated", true)
+
+StarterGui:SetCore("ChatMakeSystemMessage", {
+	Text = "infection mod activated | Credits to leonard eyes and arthur for making this beautiful mod :D";
+	Color = Color3.fromRGB(255, 60, 60);
+	Font = Enum.Font.GothamBold;
+	TextSize = 18;
+})
+
+task.spawn(function()
+
+	ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+	caption.caption("Credits to hardcore for the ideas.", true)
+
+	wait(2)
+
+	caption.caption("good luck :3", true)
+
+end)
+
+-- =====================================================
+-- Ã°Å¸â€“Â¼Ã¯Â¸Â PAINTINGS
+-- =====================================================
+
+local IMAGES = {
+	"rbxassetid://84426996855215",
+	"rbxassetid://100747358889360",
+	"rbxassetid://119322997498243",
+	"rbxassetid://136626205066563",
+	"rbxassetid://137901103376590",
+	"rbxassetid://131758820624433",
+	"rbxassetid://116805943311693",
+	"rbxassetid://74179368824762"
+}
+
+local current = 1
+local edited = {}
+
+local function GetNextImage()
+
+	local img = IMAGES[current]
+
+	current += 1
+
+	if current > #IMAGES then
+		current = 1
+	end
+
+	return img
+end
+
+local function IsPainting(name)
+
+	name = name:lower()
+
+	return name:find("paint")
+	or name:find("frame")
+	or name:find("canvas")
+	or name:find("art")
+end
+
+local function EditObject(v)
+
+	if edited[v] then
+		return
+	end
+
+	if v:IsA("Decal") then
+
+		local p = v.Parent
+
+		if p and IsPainting(p.Name) then
+
+			edited[v] = true
+			v.Texture = GetNextImage()
+		end
+	end
+
+	if v:IsA("ImageLabel") then
+
+		local p = v.Parent and v.Parent.Parent
+
+		if p and IsPainting(p.Name) then
+
+			edited[v] = true
+			v.Image = GetNextImage()
+		end
+	end
+end
+
+for _,v in ipairs(Workspace:GetDescendants()) do
+
+	pcall(function()
+
+		EditObject(v)
+
+	end)
+end
+
+Workspace.DescendantAdded:Connect(function(v)
+
+	pcall(function()
+
+		EditObject(v)
+
+	end)
+end)
+
+-- =====================================================
+-- Ã°Å¸Å½Âµ SEEK MUSIC
+-- =====================================================
+
+local NEW_SEEK_MUSIC = "rbxassetid://102136722289857"
+
+local changed = {}
+
+local function CheckSound(v)
+
+	if changed[v] then
+		return
+	end
+
+	if v:IsA("Sound") then
+
+		local n = v.Name:lower()
+		local p = v.Parent and v.Parent.Name:lower() or ""
+
+		if n:find("seek")
+		or n:find("chase")
+		or p:find("seek")
+		or p:find("chase") then
+
+			changed[v] = true
+
+			v.SoundId = NEW_SEEK_MUSIC
+			v.Volume = 1
+
+			if v.IsPlaying then
+
+				v:Stop()
+				task.wait()
+				v:Play()
+			end
+		end
+	end
+end
+
+for _,v in ipairs(Workspace:GetDescendants()) do
+
+	pcall(function()
+
+		CheckSound(v)
+
+	end)
+end
+
+--// Ã°Å¸â€˜ÂÃ¯Â¸Â STALKER DOORS ENTITY FINAL
+--// Ã°Å¸â€™Â¬ COMANDO: /stalker
+--// Ã°Å¸â€˜ÂÃ¯Â¸Â Spawn aleatÃƒÂ³rio raro no Doors
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local SoundService = game:GetService("SoundService")
+
+local player = Players.LocalPlayer
+
+local spawned = false
+local gotAchievement = false
+
+local currentStalker = nil
+local currentConnection = nil
+local currentAmbient = nil
+local currentAtmosphere = nil
+local currentBlur = nil
+local currentRoom = 0
+
+-- Ã°Å¸â€˜ÂÃ¯Â¸Â REMOVER
+local function removeStalker()
+
+	if not spawned then
+		return
+	end
+
+	spawned = false
+
+	-- Ã°Å¸â€Å  SOM SUMIR
+	local disappear = Instance.new("Sound")
+	disappear.SoundId = "rbxassetid://107210415558708"
+	disappear.Volume = 8
+	disappear.PlaybackSpeed = 0.60
+	disappear.Parent = SoundService
+	disappear:Play()
+
+	if currentAmbient then
+		currentAmbient:Stop()
+	end
+
+	if currentConnection then
+		currentConnection:Disconnect()
+	end
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â EFEITO
+	if currentBlur then
+		for i = 1,20 do
+			currentBlur.Size = i
+			task.wait(0.02)
+		end
+	end
+
+	if currentStalker then
+		currentStalker:Destroy()
+	end
+
+	if currentAtmosphere then
+		currentAtmosphere:Destroy()
+	end
+
+	if currentBlur then
+		currentBlur:Destroy()
+	end
+
+	Lighting.FogEnd = 100000
+
+	-- Ã°Å¸Ââ€  CONQUISTA
+	if not gotAchievement then
+
+		gotAchievement = true
+
+		local achievementGiver = loadstring(game:HttpGet(
+			"https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+		))()
+
+		achievementGiver({
+			Title = "Survive The Stalker",
+			Desc = "You survived The Stalker.",
+			Reason = "You will end dead SOON...",
+			Image = "rbxassetid://133135386874958"
+		})
+	end
+end
+
+-- Ã°Å¸â€˜ÂÃ¯Â¸Â SPAWN
+local function spawnStalker()
+
+	if spawned then
+		return
+	end
+
+	spawned = true
+
+	local char = player.Character or player.CharacterAdded:Wait()
+	local humanoid = char:WaitForChild("Humanoid")
+	local root = char:WaitForChild("HumanoidRootPart")
+	local cam = workspace.CurrentCamera
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â MAPA
+	Lighting.FogColor = Color3.fromRGB(170,0,255)
+	Lighting.FogEnd = 70
+	Lighting.Ambient = Color3.fromRGB(90,0,120)
+	Lighting.OutdoorAmbient = Color3.fromRGB(90,0,120)
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â ATMOSPHERE
+	local atmosphere = Instance.new("Atmosphere")
+	atmosphere.Density = 0.45
+	atmosphere.Color = Color3.fromRGB(170,0,255)
+	atmosphere.Decay = Color3.fromRGB(90,0,120)
+	atmosphere.Parent = Lighting
+
+	currentAtmosphere = atmosphere
+
+	-- Ã°Å¸â€˜ÂÃ¯Â¸Â STALKER
+	local stalker = Instance.new("Part")
+	stalker.Name = "Stalker"
+	stalker.Anchored = true
+	stalker.CanCollide = false
+	stalker.Transparency = 1
+	stalker.Size = Vector3.new(6,6,6)
+	stalker.Parent = workspace
+
+	currentStalker = stalker
+
+	stalker.Position =
+		root.Position +
+		(cam.CFrame.LookVector * 16) +
+		Vector3.new(0,4,0)
+
+	stalker.CFrame = CFrame.lookAt(
+		stalker.Position,
+		root.Position
+	)
+
+	-- Ã°Å¸â€“Â¼Ã¯Â¸Â FACE
+	local billboard = Instance.new("BillboardGui")
+	billboard.Size = UDim2.new(12,0,12,0)
+	billboard.AlwaysOnTop = true
+	billboard.LightInfluence = 0
+	billboard.Parent = stalker
+
+	local face = Instance.new("ImageLabel")
+	face.Size = UDim2.new(1,0,1,0)
+	face.BackgroundTransparency = 1
+	face.Image = "rbxassetid://118877747536615"
+	face.ImageTransparency = 1
+	face.Parent = billboard
+
+	-- Ã°Å¸Å¸Â£ LUZ
+	local light = Instance.new("PointLight")
+	light.Color = Color3.fromRGB(170,0,255)
+	light.Range = 25
+	light.Brightness = 0
+	light.Parent = stalker
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â FOG
+	local fog = Instance.new("ParticleEmitter")
+	fog.Texture = "rbxassetid://133836618120873"
+	fog.Rate = 45
+	fog.Lifetime = NumberRange.new(2,4)
+	fog.Speed = NumberRange.new(0.2,1)
+	fog.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,6),
+		NumberSequenceKeypoint.new(1,12)
+	})
+	fog.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,0.3),
+		NumberSequenceKeypoint.new(1,1)
+	})
+	fog.Color = ColorSequence.new(Color3.fromRGB(170,0,255))
+	fog.SpreadAngle = Vector2.new(360,360)
+	fog.Parent = stalker
+
+	-- Ã¢Å“Â¨ SHOCK
+	local shock = Instance.new("ParticleEmitter")
+	shock.Texture = "rbxassetid://14957129065"
+	shock.Color = ColorSequence.new(Color3.fromRGB(255,0,255))
+	shock.LightEmission = 1
+	shock.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,2),
+		NumberSequenceKeypoint.new(1,0)
+	})
+	shock.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,0.2),
+		NumberSequenceKeypoint.new(1,1)
+	})
+	shock.Rate = 120
+	shock.Lifetime = NumberRange.new(0.5,1)
+	shock.Speed = NumberRange.new(0,2)
+	shock.SpreadAngle = Vector2.new(360,360)
+	shock.Parent = stalker
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â BLUR
+	local blur = Instance.new("BlurEffect")
+	blur.Size = 0
+	blur.Parent = Lighting
+
+	currentBlur = blur
+
+	-- Ã°Å¸â€Å  APARECER
+	local appear = Instance.new("Sound")
+	appear.SoundId = "rbxassetid://137936329847358"
+	appear.Volume = 8
+	appear.Parent = SoundService
+	appear:Play()
+
+	for i = 1,25 do
+		face.ImageTransparency = 1 - (i/25)
+		light.Brightness = i/5
+		blur.Size = i/2
+		task.wait(0.02)
+	end
+
+	blur.Size = 0
+
+	-- Ã°Å¸â€Å  AMBIENTE
+	local ambient = Instance.new("Sound")
+	ambient.SoundId = "rbxassetid://129530140353853"
+	ambient.Volume = 3
+	ambient.PlaybackSpeed = 0.40
+	ambient.Looped = true
+	ambient.Parent = SoundService
+	ambient:Play()
+
+	currentAmbient = ambient
+
+	local lastDamage = 0
+
+	-- Ã°Å¸â€˜ÂÃ¯Â¸Â SISTEMA
+	currentConnection = RunService.RenderStepped:Connect(function()
+
+		if not stalker or not stalker.Parent then
+			return
+		end
+
+		stalker.CFrame = CFrame.lookAt(
+			stalker.Position,
+			root.Position
+		)
+
+		local direction =
+			(stalker.Position - cam.CFrame.Position).Unit
+
+		local dot =
+			cam.CFrame.LookVector:Dot(direction)
+
+		-- Ã¢ÂÅ’ NÃƒÆ’O OLHAR
+		if dot < 0.45 then
+
+			if tick() - lastDamage >= 0.6 then
+				lastDamage = tick()
+
+				humanoid:TakeDamage(9)
+
+				-- Ã°Å¸â€™â‚¬ NOME DA MORTE
+				pcall(function()
+
+					game.ReplicatedStorage.GameStats["Player_"..player.Name]
+						.Total.DeathCause.Value = "Stalker"
+
+					firesignal(
+						game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent,
+						{
+							"You died to Stalker.",
+							"Keep looking at him.",
+							"If you look away, he will hurt you."
+						},
+						"Purple"
+					)
+
+				end)
+
+				local dmg = Instance.new("Sound")
+				dmg.SoundId = "rbxassetid://135658480423375"
+				dmg.Volume = 7
+				dmg.Parent = SoundService
+				dmg:Play()
+
+				local hitBlur = Instance.new("BlurEffect")
+				hitBlur.Size = 18
+				hitBlur.Parent = Lighting
+
+				task.delay(0.25,function()
+					hitBlur:Destroy()
+				end)
+			end
+		end
+	end)
+end
+
+-- Ã°Å¸â€™Â¬ COMANDO
+player.Chatted:Connect(function(msg)
+
+	if msg:lower() == "/stalker" then
+		spawnStalker()
+	end
+end)
+
+-- Ã°Å¸Å¡Âª SISTEMA DO DOORS
+task.spawn(function()
+
+	local latestRoom =
+		game.ReplicatedStorage.GameData.LatestRoom
+
+	while true do
+
+		latestRoom.Changed:Wait()
+
+		local room = latestRoom.Value
+
+		-- Ã°Å¸â€˜ÂÃ¯Â¸Â Chance de spawn
+		if not spawned then
+
+			local chance = math.random(1,100)
+
+			-- chance rara
+			if chance <= 18 then
+
+				currentRoom = room
+
+				task.wait(1)
+
+				spawnStalker()
+			end
+		else
+
+			-- Ã°Å¸Å¡Âª abriu prÃƒÂ³xima porta = some
+			if room > currentRoom then
+
+				removeStalker()
+			end
+		end
+	end
+end)
+
+Workspace.DescendantAdded:Connect(function(v)
+
+	pcall(function()
+
+		CheckSound(v)
+
+	end)
+end)
+
+print("Ã°Å¸Â¦  FULL ENTITY PACK LOADED")
+
+
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local gotAchievement = false
+local spawned = false
+
+local function spawnShockReaper()
+
+    if spawned then
+        return
+    end
+
+    spawned = true
+
+    local camera = Workspace.CurrentCamera
+
+    -- Ã°Å¸â€˜ÂÃ¯Â¸Â PART
+    local shockerPart = Instance.new("Part")
+    shockerPart.Name = "ShockReaper"
+
+    -- Ã°Å¸â€â€™ COLISÃƒÆ’O MAIOR
+    shockerPart.Size = Vector3.new(10,10,4)
+
+    shockerPart.Anchored = true
+
+    -- Ã°Å¸â€â€™ COLISÃƒÆ’O PERMANENTE
+    shockerPart.CanCollide = true
+    shockerPart.CanTouch = true
+    shockerPart.CanQuery = true
+
+    shockerPart.Transparency = 1
+
+    shockerPart.Massless = true
+
+    shockerPart.CustomPhysicalProperties =
+        PhysicalProperties.new(999999,0.3,0.5)
+
+    shockerPart.Parent = Workspace
+
+    shockerPart.CFrame = camera.CFrame * CFrame.new(0,0,-7)
+
+    -- Ã°Å¸â€“Â¼Ã¯Â¸Â IMAGEM
+    local billboard = Instance.new("BillboardGui")
+    billboard.Size = UDim2.new(8,0,8,0)
+    billboard.AlwaysOnTop = true
+    billboard.LightInfluence = 0
+    billboard.Parent = shockerPart
+
+    local image = Instance.new("ImageLabel")
+    image.Size = UDim2.new(1,0,1,0)
+    image.BackgroundTransparency = 1
+    image.Image = "rbxassetid://130836271394721"
+    image.Parent = billboard
+
+    -- Ã°Å¸Å’Â«Ã¯Â¸Â FOG ESPALHANDO
+    local fog = Instance.new("ParticleEmitter")
+    fog.Texture = "rbxassetid://99464378443482"
+
+    fog.Rate = 28
+    fog.Lifetime = NumberRange.new(2,4)
+
+    -- Ã°Å¸Å’Â«Ã¯Â¸Â ESPALHA
+    fog.Speed = NumberRange.new(1,4)
+
+    fog.Rotation = NumberRange.new(0,360)
+    fog.RotSpeed = NumberRange.new(-40,40)
+
+    fog.SpreadAngle = Vector2.new(360,360)
+
+    -- Ã°Å¸Å’Â«Ã¯Â¸Â PARTÃƒÂCULAS DIFERENTES
+    fog.Size = NumberSequence.new({
+        NumberSequenceKeypoint.new(0,0.5),
+        NumberSequenceKeypoint.new(0.3,2),
+        NumberSequenceKeypoint.new(1,4)
+    })
+
+    fog.Transparency = NumberSequence.new({
+        NumberSequenceKeypoint.new(0,0.15),
+        NumberSequenceKeypoint.new(1,1)
+    })
+
+    fog.Parent = shockerPart
+
+    -- Ã°Å¸â€™Å“ LUZ
+    local light = Instance.new("PointLight")
+    light.Color = Color3.fromRGB(170,0,255)
+    light.Range = 12
+    light.Brightness = 2
+    light.Parent = shockerPart
+
+    -- Ã°Å¸â€Å  SOM AMBIENTE
+    local ambientSound = Instance.new("Sound")
+    ambientSound.SoundId = "rbxassetid://140454859727160"
+    ambientSound.Volume = 0.70
+    ambientSound.PlaybackSpeed = 0.50
+    ambientSound.Looped = true
+
+    -- Ã°Å¸â€Â¥ SOM INSTANTÃƒâ€šNEO
+    ambientSound.Parent = workspace.CurrentCamera
+    ambientSound.TimePosition = 0
+    ambientSound:Play()
+
+    -- Ã°Å¸â€Å  SOM ATAQUE
+    local attackSound = Instance.new("Sound")
+    attackSound.SoundId = "rbxassetid://140072309105684"
+    attackSound.Volume = 5
+    attackSound.Parent = shockerPart
+
+    local lookDuration = 2
+    local lookStart = nil
+    local hasTriggered = false
+    local hasFallen = false
+    local playerWon = false
+
+    local function giveAchievement()
+
+        if gotAchievement then
+            return
+        end
+
+        if not playerWon then
+            return
+        end
+
+        gotAchievement = true
+
+        local achievementGiver = loadstring(game:HttpGet(
+            "https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+        ))()
+
+        achievementGiver({
+            Title = "You survived ShockReaper",
+            Desc = "I'm not an electrician. Was that supposed to be a shock absorber?",
+            Reason = "Electrifying experience",
+            Image = "rbxassetid://78819546896529"
+        })
+    end
+
+    -- Ã°Å¸â€Â½ REMOVER
+    local function removeEntity()
+
+        if hasFallen then return end
+        hasFallen = true
+
+        -- Ã°Å¸â€Å  SOM SOME JUNTO
+        ambientSound:Stop()
+
+        -- Ã°Å¸â€˜ÂÃ¯Â¸Â ESCONDE IMAGEM
+        billboard.Enabled = false
+
+        -- Ã°Å¸Å’Â«Ã¯Â¸Â DESLIGA FUMAÃƒâ€¡A
+        fog.Enabled = false
+
+        -- Ã°Å¸â€Â½ DESCE PRA BAIXO
+        local tween = TweenService:Create(
+            shockerPart,
+            TweenInfo.new(
+                1.5,
+                Enum.EasingStyle.Quad,
+                Enum.EasingDirection.In
+            ),
+            {
+                Position = shockerPart.Position - Vector3.new(0,50,0)
+            }
+        )
+
+        tween:Play()
+
+        task.delay(1.5,function()
+
+            spawned = false
+
+            if shockerPart then
+                shockerPart:Destroy()
+            end
+        end)
+    end
+
+    local connection
+
+    connection = RunService.RenderStepped:Connect(function()
+
+        if not character or not character:FindFirstChild("HumanoidRootPart") then
+            return
+        end
+
+        if hasTriggered then
+            connection:Disconnect()
+            return
+        end
+
+        local direction =
+            (shockerPart.Position - camera.CFrame.Position).Unit
+
+        local dot =
+            direction:Dot(camera.CFrame.LookVector)
+
+        -- Ã°Å¸â€˜ÂÃ¯Â¸Â OLHOU
+        if dot > 0.60 then
+
+            if not lookStart then
+
+                lookStart = tick()
+
+            elseif tick() - lookStart >= lookDuration then
+
+                hasTriggered = true
+                connection:Disconnect()
+
+                attackSound:Play()
+
+                humanoid:TakeDamage(30)
+
+                -- Ã°Å¸â€™â‚¬ GUIA
+                pcall(function()
+
+                    ReplicatedStorage.GameStats["Player_"..player.Name]
+                        .Total.DeathCause.Value = "ShockReaper"
+
+                    firesignal(
+                        ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent,
+                        {
+                            "You died to ShockReaper.",
+                            "Do not look at him.",
+                            "He fears what is coming next..."
+                        },
+                        "Blue"
+                    )
+                end)
+
+                local targetPos =
+                    character.HumanoidRootPart.Position +
+                    Vector3.new(0,2,0)
+
+                local tween = TweenService:Create(
+                    shockerPart,
+                    TweenInfo.new(
+                        1.2,
+                        Enum.EasingStyle.Exponential,
+                        Enum.EasingDirection.Out
+                    ),
+                    {
+                        Position = targetPos
+                    }
+                )
+
+                tween:Play()
+
+                tween.Completed:Connect(function()
+
+                    removeEntity()
+
+                end)
+            end
+
+        else
+
+            -- Ã¢Å“â€¦ SOBREVIVEU
+            if lookStart then
+
+                playerWon = true
+
+                giveAchievement()
+
+                connection:Disconnect()
+
+                removeEntity()
+            end
+
+            lookStart = nil
+        end
+    end)
+
+    -- Ã¢ÂÂ³ SOME
+    task.delay(20,function()
+
+        if not hasTriggered and not hasFallen then
+
+            playerWon = true
+
+            giveAchievement()
+
+            removeEntity()
+
+        end
+    end)
+end
+
+-- Ã°Å¸â€™Â¬ COMANDO
+player.Chatted:Connect(function(msg)
+
+    if msg:lower() == "/shockrapper" then
+
+        spawnShockReaper()
+
+    end
+end)
+
+-- Ã°Å¸Å½Â² SPAWN ALEATÃƒâ€œRIO
+task.spawn(function()
+
+    while true do
+
+        task.wait(math.random(35,75))
+
+        local chance = math.random(1,100)
+
+        if chance <= 70 then
+
+            spawnShockReaper()
+
+        end
+    end
+end)
+
+--// Ã°Å¸â€˜ÂÃ¯Â¸Â INFECTED SILENCE + Ã°Å¸â€˜ÂÃ¯Â¸Â MINIONS + Ã°Å¸â€Â¦ FLASHLIGHT + Ã°Å¸Ââ€  ACHIEVEMENT
+--// Ã°Å¸â€™Â¬ /infected silence
+--// Ã°Å¸Å½Â² SPAWN RARO
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local SoundService = game:GetService("SoundService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UIS = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+
+local spawned = false
+local gotAchievement = false
+
+local currentStalker = nil
+local currentConnection = nil
+local currentAmbient = nil
+local currentAtmosphere = nil
+local currentRoom = 0
+
+local minions = {}
+
+-- Ã°Å¸â€Â¦ FLASHLIGHT
+local char = player.Character or player.CharacterAdded:Wait()
+local head = char:WaitForChild("Head")
+
+pcall(function()
+
+	head:FindFirstChild("DoorsRedFlashlight"):Destroy()
+
+	if player.PlayerGui:FindFirstChild("DoorsFlashlightGui") then
+		player.PlayerGui.DoorsFlashlightGui:Destroy()
+	end
+end)
+
+local flashLight = Instance.new("SpotLight")
+flashLight.Name = "DoorsRedFlashlight"
+flashLight.Parent = head
+
+flashLight.Color = Color3.fromRGB(255,0,0)
+flashLight.Brightness = 4
+flashLight.Range = 55
+flashLight.Angle = 95
+flashLight.Enabled = true
+
+local flashlightEnabled = true
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "DoorsFlashlightGui"
+gui.ResetOnSpawn = false
+gui.Parent = player.PlayerGui
+
+local button = Instance.new("ImageButton")
+button.Parent = gui
+
+button.Size = UDim2.new(0,82,0,82)
+button.Position = UDim2.new(0.82,0,0.20,0)
+
+button.BackgroundColor3 = Color3.fromRGB(15,15,15)
+button.Image = "rbxassetid://107954450051744"
+button.BorderSizePixel = 0
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1,0)
+corner.Parent = button
+
+local stroke = Instance.new("UIStroke")
+stroke.Parent = button
+stroke.Thickness = 4
+stroke.Color = Color3.fromRGB(255,235,200)
+
+-- Ã°Å¸â€Å  SOMS LANTERNA
+local onSound = Instance.new("Sound")
+onSound.SoundId = "rbxassetid://133628145763554"
+onSound.Volume = 2
+onSound.Parent = head
+
+local offSound = Instance.new("Sound")
+offSound.SoundId = "rbxassetid://89857156580830"
+offSound.Volume = 2
+offSound.Parent = head
+
+local function Toggle()
+
+	flashlightEnabled = not flashlightEnabled
+	flashLight.Enabled = flashlightEnabled
+
+	if flashlightEnabled then
+
+		onSound:Play()
+
+		button.BackgroundColor3 = Color3.fromRGB(15,15,15)
+
+	else
+
+		offSound:Play()
+
+		button.BackgroundColor3 = Color3.fromRGB(35,35,35)
+	end
+end
+
+button.MouseButton1Click:Connect(Toggle)
+
+UIS.InputBegan:Connect(function(input,gp)
+
+	if gp then
+		return
+	end
+
+	if input.KeyCode == Enum.KeyCode.F then
+		Toggle()
+	end
+end)
+
+-- Ã°Å¸â€˜ÂÃ¯Â¸Â REMOVER
+local function removeEverything()
+
+	if not spawned then
+		return
+	end
+
+	spawned = false
+
+	local disappear = Instance.new("Sound")
+	disappear.SoundId = "rbxassetid://107210415558708"
+	disappear.Volume = 8
+	disappear.Parent = SoundService
+	disappear:Play()
+
+	if currentAmbient then
+		currentAmbient:Stop()
+	end
+
+	if currentConnection then
+		currentConnection:Disconnect()
+	end
+
+	if currentStalker then
+		currentStalker:Destroy()
+	end
+
+	if currentAtmosphere then
+		currentAtmosphere:Destroy()
+	end
+
+	for v,_ in pairs(minions) do
+
+		if v and v.Parent then
+			v:Destroy()
+		end
+	end
+
+	table.clear(minions)
+
+	Lighting.FogEnd = 100000
+
+	-- Ã°Å¸Ââ€  CONQUISTA
+	if not gotAchievement then
+
+		gotAchievement = true
+
+		local achievementGiver = loadstring(game:HttpGet(
+			"https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+		))()
+
+		achievementGiver({
+			Title = "Survive Infected Silence",
+			Desc = "You survived Infected Silence.",
+			Reason = "silence is good",
+			Image = "rbxassetid://75023243237398"
+		})
+	end
+end
+
+-- Ã°Å¸â€˜ÂÃ¯Â¸Â MINIONS
+local function createMinion(position)
+
+	local minion = Instance.new("Part")
+	minion.Name = "InfectedMinion"
+	minion.Anchored = true
+	minion.CanCollide = false
+	minion.Transparency = 1
+	minion.Size = Vector3.new(4,4,4)
+	minion.Parent = workspace
+
+	minion.Position = position
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Size = UDim2.new(6,0,6,0)
+	billboard.AlwaysOnTop = true
+	billboard.Parent = minion
+
+	local image = Instance.new("ImageLabel")
+	image.Size = UDim2.new(1,0,1,0)
+	image.BackgroundTransparency = 1
+	image.Image = "rbxassetid://129937359771142"
+	image.Parent = billboard
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â FOG MENOR
+	local fog = Instance.new("ParticleEmitter")
+	fog.Texture = "rbxassetid://87960640100242"
+
+	fog.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0,Color3.fromRGB(255,0,0)),
+		ColorSequenceKeypoint.new(1,Color3.fromRGB(0,170,255))
+	})
+
+	fog.Rate = 28
+	fog.Lifetime = NumberRange.new(2,4)
+	fog.Speed = NumberRange.new(0.5,1.5)
+
+	fog.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,1.5),
+		NumberSequenceKeypoint.new(0.5,3),
+		NumberSequenceKeypoint.new(1,5)
+	})
+
+	fog.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,0.25),
+		NumberSequenceKeypoint.new(1,1)
+	})
+
+	fog.SpreadAngle = Vector2.new(360,360)
+	fog.Parent = minion
+
+	local effect1 = Instance.new("ParticleEmitter")
+	effect1.Texture = "rbxassetid://16764566328"
+	effect1.Rate = 25
+	effect1.Parent = minion
+
+	local effect2 = Instance.new("ParticleEmitter")
+	effect2.Texture = "rbxassetid://17698488773"
+	effect2.Rate = 15
+	effect2.Parent = minion
+
+	-- Ã°Å¸â€Å  AMBIENTE MINION
+	local ambient = Instance.new("Sound")
+	ambient.SoundId = "rbxassetid://139866863795650"
+	ambient.Volume = 0.7
+	ambient.Looped = true
+	ambient.Parent = minion
+	ambient:Play()
+
+	minions[minion] = false
+end
+
+-- Ã°Å¸â€˜ÂÃ¯Â¸Â SPAWN
+local function spawnStalker()
+
+	if spawned then
+		return
+	end
+
+	spawned = true
+
+	local char = player.Character or player.CharacterAdded:Wait()
+	local humanoid = char:WaitForChild("Humanoid")
+	local root = char:WaitForChild("HumanoidRootPart")
+	local cam = workspace.CurrentCamera
+
+	Lighting.FogColor = Color3.fromRGB(255,0,0)
+	Lighting.FogEnd = 70
+
+	local atmosphere = Instance.new("Atmosphere")
+	atmosphere.Density = 0.45
+	atmosphere.Color = Color3.fromRGB(255,0,0)
+	atmosphere.Parent = Lighting
+
+	currentAtmosphere = atmosphere
+
+	local stalker = Instance.new("Part")
+	stalker.Name = "Infected Silence"
+	stalker.Anchored = true
+	stalker.CanCollide = false
+	stalker.Transparency = 1
+	stalker.Size = Vector3.new(6,6,6)
+	stalker.Parent = workspace
+
+	currentStalker = stalker
+
+	stalker.Position =
+		root.Position +
+		(cam.CFrame.LookVector * 16) +
+		Vector3.new(0,4,0)
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Size = UDim2.new(9,0,9,0)
+	billboard.AlwaysOnTop = true
+	billboard.Parent = stalker
+
+	local face = Instance.new("ImageLabel")
+	face.Size = UDim2.new(1,0,1,0)
+	face.BackgroundTransparency = 1
+	face.Image = "rbxassetid://85657035953687"
+	face.Parent = billboard
+
+	local light = Instance.new("PointLight")
+	light.Color = Color3.fromRGB(255,0,0)
+	light.Range = 25
+	light.Brightness = 2
+	light.Parent = stalker
+
+	-- Ã°Å¸Å’Â«Ã¯Â¸Â FOG MAIOR
+	local fog = Instance.new("ParticleEmitter")
+	fog.Texture = "rbxassetid://87960640100242"
+
+	fog.Rate = 100
+	fog.Lifetime = NumberRange.new(4,7)
+	fog.Speed = NumberRange.new(1,3)
+
+	fog.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,14),
+		NumberSequenceKeypoint.new(0.5,22),
+		NumberSequenceKeypoint.new(1,30)
+	})
+
+	fog.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,0.15),
+		NumberSequenceKeypoint.new(1,1)
+	})
+
+	fog.Color = ColorSequence.new(Color3.fromRGB(255,0,0))
+	fog.SpreadAngle = Vector2.new(360,360)
+	fog.Parent = stalker
+
+	local effect1 = Instance.new("ParticleEmitter")
+	effect1.Texture = "rbxassetid://16764566328"
+	effect1.Rate = 25
+	effect1.Parent = stalker
+
+	local effect2 = Instance.new("ParticleEmitter")
+	effect2.Texture = "rbxassetid://17698488773"
+	effect2.Rate = 15
+	effect2.Parent = stalker
+
+	local appear = Instance.new("Sound")
+	appear.SoundId = "rbxassetid://137936329847358"
+	appear.Volume = 8
+	appear.Parent = SoundService
+	appear:Play()
+
+	require(player.PlayerGui.MainUI.Initiator.Main_Game)
+		.caption("CROUCH DOWN!!!", true)
+
+	-- Ã°Å¸â€Å  AMBIENTE INFECTED
+	local ambient = Instance.new("Sound")
+	ambient.SoundId = "rbxassetid://135376180128296"
+	ambient.Volume = 3
+	ambient.PlaybackSpeed = 0.60
+	ambient.Looped = true
+	ambient.Parent = SoundService
+	ambient:Play()
+
+	currentAmbient = ambient
+
+	-- Ã°Å¸â€˜ÂÃ¯Â¸Â MINIONS
+	for i = 1,7 do
+
+		local offset = Vector3.new(
+			math.random(-35,35),
+			math.random(1,8),
+			math.random(-35,35)
+		)
+
+		createMinion(root.Position + offset)
+	end
+
+	local lastDamage = 0
+
+	currentConnection = RunService.RenderStepped:Connect(function()
+
+		if not stalker or not stalker.Parent then
+			return
+		end
+
+		local crouching = false
+
+		pcall(function()
+
+			crouching =
+				player.Character:GetAttribute("Crouching")
+				or false
+		end)
+
+		-- Ã¢ÂÅ’ EM PÃƒâ€°
+		if not crouching then
+
+			if tick() - lastDamage >= 0.6 then
+
+				lastDamage = tick()
+
+				humanoid:TakeDamage(9)
+
+				local standSound = Instance.new("Sound")
+				standSound.SoundId = "rbxassetid://102117463141738"
+				standSound.Volume = 4
+				standSound.Parent = SoundService
+				standSound:Play()
+
+				pcall(function()
+
+					ReplicatedStorage.GameStats["Player_"..player.Name]
+						.Total.DeathCause.Value = "Infected Silence"
+
+					firesignal(
+						ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent,
+						{
+							"You died to Infected Silence.",
+							"Crouch down immediately.",
+							"He attacks players standing up."
+						},
+						"Red"
+					)
+				end)
+			end
+		end
+
+		-- Ã°Å¸â€™â‚¬ MUITO PERTO
+		local distance =
+			(root.Position - stalker.Position).Magnitude
+
+		if distance <= 6 then
+
+			humanoid.Health = 0
+
+			pcall(function()
+
+				ReplicatedStorage.GameStats["Player_"..player.Name]
+					.Total.DeathCause.Value = "Infected Silence"
+
+				firesignal(
+					ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent,
+					{
+						"You died to Infected Silence.",
+						"Do not get too close to it.",
+						"Stay away and crouch."
+					},
+					"Red"
+				)
+			end)
+		end
+
+		-- Ã°Å¸â€˜ÂÃ¯Â¸Â MINIONS
+		for minion,angry in pairs(minions) do
+
+			if minion and minion.Parent then
+
+				local direction =
+					(minion.Position - head.Position).Unit
+
+				local dot =
+					head.CFrame.LookVector:Dot(direction)
+
+				local distance2 =
+					(head.Position - minion.Position).Magnitude
+
+				if flashlightEnabled
+				and dot > 0.94
+				and distance2 <= 55
+				and not minions[minion] then
+
+					minions[minion] = true
+
+					local angrySound = Instance.new("Sound")
+					angrySound.SoundId = "rbxassetid://133560890939895"
+					angrySound.Volume = 1
+					angrySound.Parent = minion
+					angrySound:Play()
+				end
+
+				if minions[minion] then
+
+					minion.Position =
+						minion.Position:Lerp(
+							root.Position,
+							0.025
+						)
+
+					if distance2 <= 4 then
+
+						local jumpscare = Instance.new("Sound")
+						jumpscare.SoundId = "rbxassetid://133560890939895"
+						jumpscare.Volume = 4
+						jumpscare.Parent = SoundService
+						jumpscare:Play()
+
+						humanoid.Health = 0
+
+						pcall(function()
+
+							ReplicatedStorage.GameStats["Player_"..player.Name]
+								.Total.DeathCause.Value = "Minion Infection"
+
+							firesignal(
+								ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent,
+								{
+									"You died to Minion Infection.",
+									"Do not shine your flashlight at them.",
+									"They become aggressive."
+								},
+								"Blue"
+							)
+						end)
+					end
+				end
+			end
+		end
+	end)
+end
+
+-- Ã°Å¸â€™Â¬ COMANDO
+player.Chatted:Connect(function(msg)
+
+	if msg:lower() == "/infected silence" then
+		spawnStalker()
+	end
+end)
+
+-- Ã°Å¸Å½Â² SPAWN RARO
+task.spawn(function()
+
+	local latestRoom =
+		ReplicatedStorage.GameData.LatestRoom
+
+	while true do
+
+		latestRoom.Changed:Wait()
+
+		local room = latestRoom.Value
+
+		local chance = math.random(1,100)
+
+		-- Ã°Å¸â€˜ÂÃ¯Â¸Â MAIS RARO
+		if not spawned and chance <= 8 then
+
+			currentRoom = room
+
+			task.wait(1)
+
+			spawnStalker()
+
+		elseif spawned and room > currentRoom then
+
+			removeEverything()
+		end
+	end
+end)
