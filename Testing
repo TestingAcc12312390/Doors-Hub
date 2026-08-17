@@ -1,5 +1,4 @@
-wait(0) 
-game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V34 (Beta) Loaded!</font></b>")
+game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Doors Modes Hub V35 (Beta) Loaded!</font></b>")
 wait(1.5)
 game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage("<b><font color='rgb(180, 0, 255)'>Made By Rip_Silence (#idkman06483)</font></b>")
 wait(1.5)
@@ -7,7 +6,7 @@ game:GetService("TextChatService").TextChannels.RBXGeneral:DisplaySystemMessage(
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TwiRwal/TwiWare/main/uilib.lua"))()
 
-local Window = Library.CreateLib("⭐Doors Modes Hub V34⭐ (Beta)", "BloodTheme")
+local Window = Library.CreateLib("⭐Doors Modes Hub V35⭐ (Beta)", "BloodTheme")
 
 local Tab = Window:NewTab("🔪Modes🔪")
 
@@ -17,7 +16,7 @@ Section:NewButton("Forgotten Mode", "Working Perfectly", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/Wy7PSxjz"))()
 end)
 
-Section:NewButton("Creepy Mode", "Working Perfectly", function()
+Section:NewButton("Creepy Mode", "Made by DripCapyBara", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DripCapybara/Doors-Modes/refs/heads/main/CreepyMode/ObfuscatedMain.lua"))()
 end)
 
@@ -233,8 +232,8 @@ Section:NewButton("Glassy Mode", "Made by Guestly", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lynguyen26031993-design/-u/refs/heads/main/Glassy%20Mode"))()
 end)
 
-Section:NewButton("Scamer Mode", "Made by RealblueYT & Zunxd & Smile & thinh6789 & Rip_Silence", function()
-loadstring(game:HttpGet("https://arch-http.vercel.app/files/Scamer mode"))()
+Section:NewButton("Zombie Mode", "Made by Grampy", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GrampyMods/ZombieMode/refs/heads/main/mode'))()
 end)
 
 Section:NewButton("Hardcore Mode (Re-Remastered)", "ButtonInfo", function()
@@ -275,8 +274,8 @@ Section:NewButton("Insanity Mode (Reworked)", "Credit to Kotyara19k & ReboundPla
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/Recreated-modes/refs/heads/main/Insanity%20Reworked%201.3"))()
 end)
 
-Section:NewButton("Furry Mode (Remake)", "Remake by RealblueYT", function()
-loadstring(game:HttpGet("https://arch-http.vercel.app/files/Projectfurrymoderework"))()
+Section:NewButton("Stalker Mode (???)", "Made by Leo -LDX-", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/leonardocostagaucheuroleonardo-sketch/Doorsmods8/refs/heads/main/README.md"))()
 end)
 
 Section:NewButton("Fear Mode (Remake)", "Remaked by RealblueYT", function()
@@ -299,8 +298,8 @@ Section:NewButton("Impossible Mode (Remake)", "Remaked by RealblueYT & Smile", f
 loadstring(game:HttpGet("https://arch-http.vercel.app/files/Projectimpossiblebyrealblueytandsmile"))()
 end)
 
-Section:NewButton("Lunacy Mode (Remake)", "Remaked By RealblueYT", function()
-loadstring(game:HttpGet("https://arch-http.vercel.app/files/Lunacyreamake"))()
+Section:NewButton("Schizophrenia Mode", "Made by GroxMC (Fake)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tranthienhao872-ship-it/Mode/refs/heads/main/Mode%20doors%20test"))()
 end)
 
 Section:NewButton("Fragmented Mode V4 (Remake)", "Remaked by RealblueYT", function()
@@ -451,6 +450,10 @@ end)
 
 Section:NewButton("Verity Script", "Made by ItzzGabbbb (Minecraft Mod btw)", function()
 loadstring(game:HttpGet("https://pastefy.app/sqdSTwKt/raw"))()
+end)
+
+Section:NewButton("Rainbow Room", "Credit to UnknownReturnz for giving me this script", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Doors-Hub/refs/heads/main/Rainbow-Room"))()
 end)
 
 Section:NewButton("Script Mode V1 (Released)", "Made By Munciseek", function()
@@ -621,190 +624,7 @@ loadstring(game:HttpGet("https://pastebin.com/raw/MgWAd5WQ"))()
 end)
 
 Section:NewButton("The Lost Mines", "Credit to Cosplayer", function()
-local Workspace=game:GetService("Workspace")
-local SoundService=game:GetService("SoundService")
-local Lighting=game:GetService("Lighting")
-for _,g in ipairs(SoundService:GetChildren())do
-if g:IsA("SoundGroup")then
-local r=g:FindFirstChild("CaveReverb")or Instance.new("ReverbSoundEffect")
-r.Name="CaveReverb"
-r.Parent=g
-r.DecayTime=2.5
-r.Density=0.8
-r.Diffusion=0.8
-r.DryLevel=0
-r.WetLevel=-0.5
-end
-end
-task.spawn(function()
-if Lighting:FindFirstChild("Atmosphere")then Lighting.Atmosphere:Destroy()end
-Lighting.FogColor=Color3.new(0.133333,0.14902,0.239216)
-Lighting.FogStart=0
-Lighting.FogEnd=100
-end)
-local ROOM_MATERIAL=Enum.Material.Slate
-local ROOM_COLOR=Color3.fromRGB(70,70,70)
-local DOOR_MATERIAL=Enum.Material.Cobblestone
-local DOOR_COLOR=Color3.fromRGB(55,55,55)
-local LOCK_COLOR=Color3.fromRGB(95,95,95)
-local BLACKLIST_NAMES={figure=true,seek=true,screech=true,dupe=true,item=true,pickup=true,books=true,entity=true,monster=true}
-local function isBlacklisted(p)
-local a=p
-while a do
-if a:IsA("Model")or a:IsA("Folder")then
-local n=a.Name:lower()
-for b in pairs(BLACKLIST_NAMES)do
-if n:find(b)then return true end
-end
-end
-a=a.Parent
-end
-return false
-end
-local function isDoorPart(p)
-local m=p:FindFirstAncestorWhichIsA("Model")
-return m and m.Name:lower():find("door")
-end
-local function isLockPart(p)
-return p.Name:lower():find("lock")
-end
-local function stoneifyPart(p)
-if not p:IsA("BasePart")then return end
-if isBlacklisted(p)then return end
-if isDoorPart(p)then
-p.Material=DOOR_MATERIAL
-p.Color=isLockPart(p)and LOCK_COLOR or DOOR_COLOR
-else
-p.Material=ROOM_MATERIAL
-p.Color=ROOM_COLOR
-end
-p.Reflectance=0.05
-p.CastShadow=true
-end
-local function stoneifyRooms()
-local rooms=Workspace:FindFirstChild("CurrentRooms")
-if not rooms then return end
-for _,r in ipairs(rooms:GetChildren())do
-for _,p in ipairs(r:GetDescendants())do
-stoneifyPart(p)
-end
-end
-end
-stoneifyRooms()
-if Workspace:FindFirstChild("CurrentRooms")then
-Workspace.CurrentRooms.ChildAdded:Connect(function(r)
-r.DescendantAdded:Connect(stoneifyPart)
-stoneifyRooms()
-end)
-end
-coroutine.wrap(function()
-while true do
-wait(math.random(150,250))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="Silence",Asset="https://github.com/sofianmohamedovich-cmyk/tes/blob/main/silence.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=10},Shatter=true,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=false,Range=100,Values={1.5,20,0.1,1}},
-Movement={Speed=15,Delay=2,Reversed=true},
-Rebounding={Enabled=false,Type="Ambush",Min=1,Max=1,Delay=2},
-Damage={Enabled=true,Range=20,Amount=99},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to silence..","When the lights flicker, Hide!","She really hates noise...","You can do it!"},Cause=""}
-})
-e:Run()
-end
-end)()
-coroutine.wrap(function()
-while true do
-wait(math.random(300,510))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="Depth",Asset="https://github.com/sofianmohamedovich-cmyk/tes/blob/main/DEPTHNEWREMAKE.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=5},Shatter=true,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=true,Range=100,Values={1.5,20,0.1,1}},
-Movement={Speed=150,Delay=1,Reversed=false},
-Rebounding={Enabled=true,Type="Ambush",Min=3,Max=3,Delay=1},
-Damage={Enabled=true,Range=40,Amount=100},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to depth..","When the lights flicker, Hide!","Use what you've learned from ambush.","You can do it!"},Cause=""}
-})
-e:Run()
-end
-end)()
-coroutine.wrap(function()
-while true do
-wait(math.random(100,210))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="Bloody rush",Asset="https://github.com/sofianmohamedovich-cmyk/tes/blob/main/bloodbathrush.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=3},Shatter=true,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=true,Range=100,Values={1.5,20,0.1,1}},
-Movement={Speed=150,Delay=2,Reversed=true},
-Rebounding={Enabled=false,Type="Ambush",Min=5,Max=8,Delay=2},
-Damage={Enabled=true,Range=40,Amount=100},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to bloody rush..","When the lights flicker, Hide!","Use what you've learned from Rush, it will just spawn infront instead.","You can do it!"},Cause=""}
-})
-e:Run()
-end
-end)()
-coroutine.wrap(function()
-while true do
-wait(math.random(80,155))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="Smiley",Asset="https://github.com/sofianmohamedovich-cmyk/tes/blob/main/smiley.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=20},Shatter=true,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=true,Range=100,Values={1.0,10,0.1,1}},
-Movement={Speed=100,Delay=2,Reversed=false},
-Rebounding={Enabled=false,Type="Ambush",Min=5,Max=8,Delay=2},
-Damage={Enabled=true,Range=40,Amount=100},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to smiley..","When the lights flicker, Hide!","Use what you've learned from Rush, its just slower.","You can do it!"},Cause=""}
-})
-e:Run()
-end
-end)()
-coroutine.wrap(function()
-while true do
-wait(math.random(1000,5000))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="A-60",Asset="https://github.com/sofianmohamedovich-cmyk/tes/blob/main/A60.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=30},Shatter=false,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=false,Range=100,Values={1.0,10,0.1,1}},
-Movement={Speed=300,Delay=2,Reversed=false},
-Rebounding={Enabled=true,Type="Ambush",Min=20,Max=30,Delay=3},
-Damage={Enabled=true,Range=40,Amount=100},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to..","I.. don't know ..?","Im.. not sure how to help, I'm terribly sorry..","Be carful next time."},Cause=""}
-})
-e:Run()
-end
-end)()
-coroutine.wrap(function()
-while true do
-wait(math.random(200,355))
-local spawner=loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-local e=spawner.Create({
-Entity={Name="A-200",Asset="https://github.com/sofianmohamedoviches/blob/main/A200.rbxm?raw=true",HeightOffset=0},
-Lights={Flicker={Enabled=true,Duration=10},Shatter=false,Repair=false},
-Earthquake={Enabled=false},
-CameraShake={Enabled=false,Range=100,Values={1.0,10,0.1,1}},
-Movement={Speed=30,Delay=5,Reversed=true},
-Rebounding={Enabled=false,Type="Ambush",Min=20,Max=30,Delay=3},
-Damage={Enabled=true,Range=20,Amount=100},
-Crucifixion={Enabled=true,Range=40,Resist=false,Break=true},
-Death={Type="Guiding",Hints={"You've died to..","I.. don't know ..?","Im.. not sure how to help, I'm terribly sorry..","Be carful next time."},Cause=""}
-})
-e:Run()
-end
-end)()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Other-Modes-Script/refs/heads/main/The-Lost-Mines"))()
 end)
 
 Section:NewButton("Script Mode (Remake)", "Made by Reboundplayz", function()
@@ -894,6 +714,10 @@ Section:NewButton("Joy Hub", "ButtonInfo", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Joy-hub-93382"))()
 end)
 
+Section:NewButton("Doors Hub + Editor (Beta)", "Made By Loper367", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/razumenkonikita9-cmyk/Doors-hub-Editor/refs/heads/main/D.lua"))()
+end)
+
 Section:NewButton("Guestly's Doors Modes Hub V3", "Credit to Guestly (Celestian)", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Not-Guestly/Modes/refs/heads/main/GUESTLY-DOORS-MODE-HUB"))()
 end)
@@ -932,6 +756,10 @@ end)
 
 Section:NewButton("Impossible Mode (Legacy)", "Made by reboundplayz", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Impossible-Mode-Legacy-Made-by-reboundplayz"))()
+end)
+
+Section:NewButton("Mayhem Mode (Legacy)", "Made By ItzzGabbbb", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ItzzGabbbb/MayhemModeLegacy1.0/refs/heads/main/DoorsMayhemModeLegacy.lua"))()
 end)
 
 Section:NewButton("Fear Mode (Legacy)", "Made by reboundplayz", function()
@@ -978,6 +806,14 @@ Section:NewButton("Hardcore Dread Spawner (Remake)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/Dread%20Remake"))()
 end)
 
+Section:NewButton("Twister Spawner (Phase 1)", "ButtonInfo", function()
+loadstring(game:HttpGet("https://pastefy.app/7jJP8zZb/raw"))()
+end)
+
+Section:NewButton("Questioner Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Custom-Entity/refs/heads/main/Questioner-Entity"))()
+end)
+
 Section:NewButton("Terrorist Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Drop56796/Spawn-terrorist/main/Spawn.lua"))()
 end)
@@ -1006,8 +842,8 @@ Section:NewButton("Cease Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastefy.app/ofutwkjb/raw"))()
 end)
 
-Section:NewButton("WH1T3 Spawner", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Junbbinopro/Wh1t3-v2/refs/heads/main/Entity"))()
+Section:NewButton("WH1T3 Spawner (Remake)", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/Wh1t3"))()
 end)
 
 Section:NewButton("Giggle Spawner", "Only spawn 1 Giggle each room", function()
@@ -1038,6 +874,18 @@ Key = "G" -- Key that is used for spawning giggle
 }
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DripCapybara/Test/refs/heads/main/Doors/GiggleSpawn.lua"))()
+end)
+
+Section:NewButton("Obsession Spawner (Remake)", "ButtonInfo", function()
+loadstring(game:HttpGet("https://pastefy.app/xlnpKWXo/raw"))()
+end)
+
+Section:NewButton("A-100 Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/A-100"))()
+end)
+
+Section:NewButton("A-75 Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Rooms-low-detailed-mode-doors/refs/heads/main/A-75"))()
 end)
 
 Section:NewButton("Daze Spawner", "ButtonInfo", function()
@@ -1126,12 +974,20 @@ Section:NewButton("G-95 Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Junbbinopro/G-95-v2/refs/heads/main/Entity"))()
 end)
 
+Section:NewButton("B ∆ B Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/B_%E2%88%86_B-Entity-Fixed"))()
+end)
+
 Section:NewButton("Hiss Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/rrealblueyt-oss/Hiss/refs/heads/main/obfuscated_script-1769948042346.lua.txt"))()
 end)
 
 Section:NewButton("B-444 Spawner", "Made by ItzzGabbbb", function()
 loadstring(game:HttpGet("https://pastefy.app/9dkXpSyy/raw"))()
+end)
+
+Section:NewButton("A-185 Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/A-185-Entity-Made-By-Someone"))()
 end)
 
 Section:NewButton("Ruinator Spawner", "ButtonInfo", function()
@@ -1158,8 +1014,16 @@ Section:NewButton("Frostbite Spawner (Remake)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/back/refs/heads/main/Frostbite1"))()
 end)
 
+Section:NewButton("Pim Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Pim-Entitiy-Made-By-TheDarkMan1334-And-Remastered-By-Me"))()
+end)
+
 Section:NewButton("A-60 Spawner (Remake)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/A-60%20Spawner"))()
+end)
+
+Section:NewButton("Ch4ser_Thre4t Spawner", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Ch4s3r_Thre4t-Entity"))()
 end)
 
 Section:NewButton("Cease Spawner (Remake)", "ButtonInfo", function()
@@ -1167,106 +1031,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Mod
 end)
 
 Section:NewButton("Z-88 Spawner", "Credit to Burgerware", function()
-local cue2 = Instance.new("Sound")
-cue2.Parent = game.Workspace
-cue2.Name = "Spawn"
-cue2.SoundId = "rbxassetid://6863021504"
-cue2.Volume = 9999
-cue2.PlaybackSpeed = 1
-cue2:Play()
-
-if game.Workspace:FindFirstChild("SeekMovingNewClone") then return end
-
----====== Load spawner ======---
-
-local spawner = loadstring(game:HttpGet(
-"https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"
-))()
-
----====== Create entity ======---
-
-local entity = spawner.Create({
-Entity = {
-Name = "Z-88",
-Asset = "rbxassetid://76660923994857",
-HeightOffset = 0
-},
-
-Lights = {
-Flicker = {
-Enabled = true,
-Duration = 15
-},
-Shatter = false,
-Repair = false
-},
-
-Earthquake = {
-Enabled = false
-},
-
-Movement = {
-Speed = 655,
-Delay = 20,
-Reversed = false
-},
-
-Rebounding = {
-Enabled = true,
-Type = "Ambush",
-Min = 10,
-Max = 15,
-Delay = 0
-},
-
-Damage = {
-Enabled = true,
-Range = 75,
-Amount = 99
-},
-
-Crucifixion = {
-Enabled = true,
-Range = 40,
-Resist = false,
-Break = true
-},
-
-Death = {
-Type = "Guiding",
-Hints = {
-"You died to ...",
-"I Dont remember HIM here..."
-},
-Cause = "Z-88"
-}
-})
-
----====== Debug callbacks ======---
-
-entity:SetCallback("OnSpawned", function()
-print("Z88 spawned")
-end)
-
-entity:SetCallback("OnStartMoving", function()
-print("Z88 moving")
-end)
-
-entity:SetCallback("OnRebounding", function(start)
-if start then
-print("Z88 rebounding")
-end
-end)
-
-entity:SetCallback("OnDamagePlayer", function(hp)
-if hp <= 0 then
-print("Player died to Z88")
-end
-end)
-
----====== Run entity ======---
-
-entity:Run()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Z-88-Entity-Made-By-Burgerware"))()
 end)
 
 Section:NewButton("Null Spawner", "ButtonInfo", function()
@@ -1369,6 +1134,14 @@ Section:NewButton("Curious Candle", "Made by Kodbol", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kodbolx/kodbolhub/refs/heads/main/curiouscandle.lua"))()
 end)
 
+Section:NewButton("Ambush Plushie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Plushie-Item/refs/heads/main/Ambush-Plushie"))()
+end)
+
+Section:NewButton("Rush Plushie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Plushie1/refs/heads/main/Rush"))()
+end)
+
 Section:NewButton("Gubby Tool", "Made by Indexell", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IdkMyNameLoll/PublicScripts/refs/heads/main/IsThatAGubbyTool"))()
 end)
@@ -1417,6 +1190,18 @@ _G.CR_HoldKeyRequired = "false"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IdkMyNameLoll/PublicScripts/refs/heads/main/crucifix_E_A_A"))()
 end)
 
+Section:NewButton("A-60 Plushie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Plushie-Item/refs/heads/main/A-60-Plushie"))()
+end)
+
+Section:NewButton("A-90 Plushie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Plushie1/refs/heads/main/A-90"))()
+end)
+
+Section:NewButton("Lucky Cookie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://pastefy.app/TefMKs39/raw"))()
+end)
+
 Section:NewButton("Guiding Flashlight", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/binhlforsaken156-sys/Guiding-flash-light/refs/heads/main/Guiding-flash-light.lua", true))()
 end)
@@ -1427,6 +1212,10 @@ end)
 
 Section:NewButton("Jeff's Tip Jar", "ButtonInfo", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/Hsuiugnr"))()
+end)
+
+Section:NewButton("Troll Crucifix", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Other-Item-Scripts/refs/heads/main/Troll-Crucifix"))()
 end)
 
 Section:NewButton("Moonlight Bottle", "ButtonInfo", function()
@@ -1516,6 +1305,14 @@ Section:NewButton("Forsaken Tools", "ButtonInfo", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-forsaken-useless-tool-pack-94779"))()
 end)
 
+Section:NewButton("Maxwell Tool", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CastiSeek/Maxwell-the-cat-script/refs/heads/main/main.lua"))()
+end)
+
+Section:NewButton("Rebound Plushie", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Plushie-Item/refs/heads/main/Rebound-Plushie"))()
+end)
+
 Section:NewButton("Magic Book", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/skkenrgjt/HAHAHAH/refs/heads/main/MagicRunner"))()
 end)
@@ -1588,8 +1385,16 @@ Section:NewButton("Hardcore Mode (Revisited)", "Made by Reboundplayz", function(
 loadstring(game:HttpGet("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/hc%20revisited"))()
 end)
 
+Section:NewButton("Rooms Low Detailed Mode", "Made by Rebound", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Rooms-low-detailed-mode-doors/refs/heads/main/Script"))()
+end)
+
 Section:NewButton("Extremely Mode", "Made by OG Hunger (New) & Thanhpok", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Extremely/refs/heads/main/Extremely%20Mode"))()
+end)
+
+Section:NewButton("Terminated Mode", "Made By UnknownReturnz", function()
+loadstring(game:HttpGet("https://pastefy.app/hT2Q5AKa/raw"))()
 end)
 
 Section:NewButton("Furry Mode (Locked)", "Made by VoorPr0", function()
@@ -1604,6 +1409,10 @@ Section:NewButton("Eyes Mode (Gamble)", "Made By Guestly, also get rare eyes to 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/EYES-MODE"))()
 end)
 
+Section:NewButton("Snuffer Mode", "Made By Anctarus7105", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/My-Modes/refs/heads/main/SnufferV1.lua"))()
+end)
+
 Section:NewButton("Blackout Mode", "Made By Rip_Silence", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Blackout-Mode-Main.lua"))()
 end)
@@ -1612,12 +1421,28 @@ Section:NewButton("Unhinged Mode", "Made By Rip_Silence", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Unhinged-Mode-Main.lua"))()
 end)
 
+Section:NewButton("Ghostly Mode", "Made By Anctarus7105", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/My-Modes/refs/heads/main/Ghostly.lua"))()
+end)
+
 Section:NewButton("Infection Mode", "Made By Leo -LXD-", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Doors-Hub/refs/heads/main/Infection-Mode-Made-By-Leo"))()
 end)
 
-Section:NewButton("Broken Mode", "Made by TheDarkMan", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TheDarkMan1334/Broken-mode/refs/heads/main/BrokenMode%20Version%201.8%20Fix"))()
+Section:NewButton("Dormant Mode", "Made By Idk.chud", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Other-Modes-Script/refs/heads/main/Dormant-Mode-Made-By-Chud"))()
+end)
+
+Section:NewButton("Mega Hard Mode", "Made By UnknownReturnz", function()
+loadstring(game:HttpGet("https://pastefy.app/jGU3jxSe/raw"))()
+end)
+
+Section:NewButton("Broken Mode (Fixed)", "Made by TheDarkMan1334", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Broken-Mode-V1.8-Fixed-Version"))()
+end)
+
+Section:NewButton("Mayhem Mode (Remake)", "Made By OG Hunger (New)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/Mayhem%20Remake"))()
 end)
 
 Section:NewButton("Grace Mode (Remake)", "Credit to someone that idk", function()
@@ -1628,8 +1453,16 @@ Section:NewButton("Super Crazy Mode", "Credit to Dt_roblx doors:))", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme2/dm123/refs/heads/main/super%20crazy%20mode"))()
 end)
 
+Section:NewButton("Dark Passage Mode", "Made By Rebound", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Dark-passage-mode/refs/heads/main/Script"))()
+end)
+
 Section:NewButton("Hardcore Mode (Retake)", "Made by Purple Hatso", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/Hardcore-Mode-(Retake)"))()
+end)
+
+Section:NewButton("Impossible Mode V2 (Remastered)", "Made By RealblueYT", function()
+loadstring(game:HttpGet("https://pastefy.app/NLdC5hRo/raw"))()
 end)
 
 Section:NewButton("Fragmented Mode (Reignited)", "Made by OG Hunger (New)", function()
@@ -1640,8 +1473,12 @@ Section:NewButton("Hardcore Mode V99999999", "Credit to RealblueYT", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/tranhuuthien958-arch/Hradcore-v999999/refs/heads/main/Hradcore%20v99999999", true))()
 end)
 
-Section:NewButton("Hardcore Reignited Mode (Recreated)", "Credit to OG Hunger (New)", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Hardcore/refs/heads/main/Hardcore%20Reiginited%20Recreate"))()
+Section:NewButton("Hardcore Reignited Mode (Recreated)", "Credit to Guestly (Celestian)", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/Hardcore-Reignited-(Recreated)"))()
+end)
+
+Section:NewButton("Negative Mode", "Made by Rebound", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/WHAT-IS-A-SOILD-OCTO-ROTRAY-PHONE-/refs/heads/main/Script"))()
 end)
 
 Section:NewButton("Mental Mode", "Made By TheLastOne", function()
@@ -1680,23 +1517,42 @@ local Tab = Window:NewTab("🤔Update Logs🤔")
 
 local Section = Tab:NewSection("---Update Logs---")
 
-local Section = Tab:NewSection("1. Updated Guestly's Doors Modes Hub V3 In Other Scripts Section")
-local Section = Tab:NewSection("2. Updated Smiler Spawner (Remake) In Entity Spawner Section")
-local Section = Tab:NewSection("3. Updated Hardcore Reignited Mode (Recreated) In Modes 2 Section")
-local Section = Tab:NewSection("4. Updated Hardcore Mode (Remake) In Modes Section")
-local Section = Tab:NewSection("5. Added Distort Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("6. Added Fabric Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("7. Added Hardcore Mode (Degenerate) In Modes 2 Section")
-local Section = Tab:NewSection("8. Added Verity Script In Extra Section")
-local Section = Tab:NewSection("9. Added God Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("10. Replaced Wer Mode to Corrupted Mode In Modes Section")
-local Section = Tab:NewSection("11. Added Trollface Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("12. Added Virus Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("13. Added Generator Hard Mode In Extra Section")
-local Section = Tab:NewSection("14. Added Unhinged Mode In Modes 2 Section")
-local Section = Tab:NewSection("15. Added B-444 Spawner In Entity Spawner Section")
-local Section = Tab:NewSection("16. Added Script Mode V1 In Extra Section")
-local Section = Tab:NewSection("17. Added Infection Mode In Modes 2 Section")
+local Section = Tab:NewSection("1. Updated Hardcore Reignited Mode (Recreated) In Modes 2 Section")
+local Section = Tab:NewSection("2. Updated WH1T3 Spawner (Remake) In Entity Spawner Section")
+local Section = Tab:NewSection("3. Updated Broken Mode (Fixed) In Modes 2 Section")
+local Section = Tab:NewSection("4. Replaced Furry Mode (Remake) With Stalker Mode")
+local Section = Tab:NewSection("5. Added Twister Spawner (Phase 1) In Entity Spawner Section")
+local Section = Tab:NewSection("6. Added A-100 Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("7. Added Obsession Spawner (Remake) In Entity Spawner Section")
+local Section = Tab:NewSection("8. Added A-75 Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("9. Added Rooms Low Detailed Mode In Modes 2 Section")
+local Section = Tab:NewSection("10. Replaced Scamer Mode With Zombie Mode In Modes Section")
+local Section = Tab:NewSection("11. Added A-60 Plushie In Custom Item Section")
+local Section = Tab:NewSection("12. Added A-185 Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("13. Added Rebound Plushie In Custom Item Section")
+local Section = Tab:NewSection("14. Added A-90 Plushie In Custom Item Section")
+local Section = Tab:NewSection("15. Replaced Lunacy Mode (Remake) With Schizophrenia Mode")
+local Section = Tab:NewSection("16. Added Ambush Plushie In Custom Item Section")
+local Section = Tab:NewSection("17. Added Rush Plushie In Custom Item Section")
+local Section = Tab:NewSection("18. Added Pim Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("19. Added Rainbow Room In Extra Section")
+local Section = Tab:NewSection("20. Added Negative Mode In Modes 2 Section")
+local Section = Tab:NewSection("21. Added Dark Passage Mode In Modes 2 Section")
+local Section = Tab:NewSection("22. Added Doors Hub + Editor (Beta) In Other Script Section")
+local Section = Tab:NewSection("23. Added Questioner Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("24. Added Terminated Mode In Modes 2 Section")
+local Section = Tab:NewSection("25. Added Impossible Mode V2 (Remastered) In Modes 2 Section")
+local Section = Tab:NewSection("26. Added B ∆ B Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("27. Added Snuffer Mode In Modes 2 Section")
+local Section = Tab:NewSection("28. Added Ch4s3r_Thre4t Spawner In Entity Spawner Section")
+local Section = Tab:NewSection("29. Added Mayhem Mode (Remake) In Modes 2 Section")
+local Section = Tab:NewSection("30. Added Dormant Mode In Modes 2 Section")
+local Section = Tab:NewSection("31. Added Mayhem Mode (Legacy) In Legacy Mode Section")
+local Section = Tab:NewSection("32. Added Ghostly Mode In Modes 2 Section")
+local Section = Tab:NewSection("33. Added Mega Hard Mode In Modes 2 Section")
+local Section = Tab:NewSection("34. Added Maxwell Tool In Custom Item Section")
+local Section = Tab:NewSection("35. Added Troll Crucifix In Custom Item Section")
+local Section = Tab:NewSection("36. Added Lucky Cookie In Custom Item Section")
 
 local Tab = Window:NewTab("😄Credits😄")
 
@@ -1707,29 +1563,126 @@ local Section = Tab:NewSection("Credit to You! (For Executing My Hub)")
 
 local Tab = Window:NewTab("Toggle Gui")
 local Section = Tab:NewSection("Toggle Gui")
-Section:NewKeybind("Toggle Gui", "KeybindInfo", Enum.KeyCode.F, function()
- Library:ToggleUI()
-end)
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "SpawnOnFalse"
-gui.ResetOnSpawn = false
-gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Section:NewKeybind(
+    "Toggle Gui",
+    "Press F to open/close the hub",
+    Enum.KeyCode.F,
+    function()
+        Library:ToggleUI()
+    end
+)
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+--// Toggle GUI
+local ToggleGui = Instance.new("ScreenGui")
+ToggleGui.Name = "ForgottenModeToggle"
+ToggleGui.ResetOnSpawn = false
+ToggleGui.IgnoreGuiInset = true
+ToggleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ToggleGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local Toggle = Instance.new("ImageButton")
 Toggle.Name = "Toggle"
-Toggle.Parent = gui
-Toggle.Size = UDim2.new(0,50,0,50)
-Toggle.Position = UDim2.new(0,0,0,100)
-Toggle.BackgroundColor3 = Color3.fromRGB(0,0,0)
-Toggle.Image = "rbxassetid://104044133462031"
+Toggle.Parent = ToggleGui
 
+--// Middle-left
+Toggle.Size = UDim2.fromOffset(52, 52)
+Toggle.Position = UDim2.new(0, 15, 0.5, -26)
+
+--// Appearance
+Toggle.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Toggle.BackgroundTransparency = 0.08
+Toggle.BorderSizePixel = 0
+
+--// Image
+Toggle.Image = "rbxassetid://14035255403"
+Toggle.ScaleType = Enum.ScaleType.Fit
+
+Toggle.AutoButtonColor = false
+Toggle.Active = true
+Toggle.Draggable = true
+
+--// Rounded corners
 local Corner = Instance.new("UICorner")
 Corner.Parent = Toggle
-Corner.CornerRadius = UDim.new(1,0)
+Corner.CornerRadius = UDim.new(0, 6)
 
+--// Border
+local Stroke = Instance.new("UIStroke")
+Stroke.Parent = Toggle
+Stroke.Thickness = 1
+Stroke.Color = Color3.fromRGB(90, 90, 90)
+Stroke.Transparency = 0.15
+
+--// Hover
+Toggle.MouseEnter:Connect(function()
+
+    TweenService:Create(
+        Toggle,
+        TweenInfo.new(0.12),
+        {
+            BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+        }
+    ):Play()
+
+    TweenService:Create(
+        Stroke,
+        TweenInfo.new(0.12),
+        {
+            Color = Color3.fromRGB(180, 180, 180)
+        }
+    ):Play()
+
+end)
+
+--// Mouse leave
+Toggle.MouseLeave:Connect(function()
+
+    TweenService:Create(
+        Toggle,
+        TweenInfo.new(0.12),
+        {
+            BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+        }
+    ):Play()
+
+    TweenService:Create(
+        Stroke,
+        TweenInfo.new(0.12),
+        {
+            Color = Color3.fromRGB(90, 90, 90)
+        }
+    ):Play()
+
+end)
+
+--// Click
 Toggle.MouseButton1Click:Connect(function()
-      Library:ToggleUI()
+
+    TweenService:Create(
+        Toggle,
+        TweenInfo.new(0.07),
+        {
+            Size = UDim2.fromOffset(47, 47)
+        }
+    ):Play()
+
+    task.wait(0.07)
+
+    TweenService:Create(
+        Toggle,
+        TweenInfo.new(0.07),
+        {
+            Size = UDim2.fromOffset(52, 52)
+        }
+    ):Play()
+
+    --// Open / close Hub
+    Library:ToggleUI()
+
 end)
 
 local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -1741,7 +1694,7 @@ local intro = shut:Clone()
 intro.Parent = mainUI
 intro.Name = "Fragment Mode Intro"
 intro.Visible = true
-intro.Text = "⭐Doors Modes Hub V34⭐"
+intro.Text = "⭐Doors Modes Hub V35⭐"
 intro.TextTransparency = 0
 
 local underlinePart = intro:FindFirstChild("Underline")
