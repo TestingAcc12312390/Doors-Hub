@@ -275,7 +275,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/Recreate
 end)
 
 Section:NewButton("Stalker Mode (???)", "Made by Leo -LDX-", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/leonardocostagaucheuroleonardo-sketch/Doorsmods8/refs/heads/main/README.md"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/leonardocostagaucheuroleonardo-sketch/Stalkermodofc/refs/heads/main/README.md"))()
 end)
 
 Section:NewButton("Fear Mode (Remake)", "Remaked by RealblueYT", function()
