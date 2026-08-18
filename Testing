@@ -1022,7 +1022,7 @@ Section:NewButton("A-60 Spawner (Remake)", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/idkman60093/Doors-Modes/refs/heads/main/A-60%20Spawner"))()
 end)
 
-Section:NewButton("Ch4ser_Thre4t Spawner", "ButtonInfo", function()
+Section:NewButton("Ch4s3r_Thre4t Spawner", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TestingAcc12312390/Private-Entity/refs/heads/main/Ch4s3r_Thre4t-Entity"))()
 end)
 
