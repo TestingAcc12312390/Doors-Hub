@@ -221,8 +221,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-st
 end)
 
 Section:NewButton("Endless Mode (Fixed)", "Made by DripCapybara & Fixed By Gab", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ItzzGabbbb/The-Endless/refs/heads/main/EndlessModeFixedByGabOmgReal.lua"))()
-end)
+loadstring(game:HttpGet("https://pastefy.app/EnSmizjL/raw"))()
 
 Section:NewButton("Hollow Mode", "Made by someone that idk", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Hollow-Mode-91878"))()
@@ -521,7 +520,7 @@ loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Simple-Scri
 end)
 
 Section:NewButton("Dev Admin Panel (Need Admin Panel)", "Credit to someone that idk", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SHRTRYScriptMANhere/DoorsDevPanel/refs/heads/main/devpanel.lua",true))()
 end)
 
 Section:NewButton("Viridis Rift", "Made By Guestly (Celestian)", function()
@@ -691,7 +690,7 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/730854e5b6499e
 end)
 
 Section:NewButton("Abyssal Hub", "Credit to FireBacon & wop2p", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bocaj111004/Abysall/refs/heads/main/Loader.luau"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/therealcookiemonsterof1966/AbysallContinued/main/Games/Doors/Main.luau"))()
 end)
 
 Section:NewButton("Vynixius", "ButtonInfo", function()
@@ -1325,8 +1324,8 @@ Section:NewButton("Seek Gun", "ButtonInfo", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/Scripts/main/seekgun.lua"))()
 end)
 
-Section:NewButton("Scanner", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/Scripts/main/Scanner.lua"))()
+Section:NewButton("NVCS-3000", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thelostw3r/Scripts/main/NVCS-3000.lua"))()
 end)
 
 Section:NewButton("M249 Gun", "ButtonInfo", function()
