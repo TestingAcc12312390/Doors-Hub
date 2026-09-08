@@ -222,6 +222,7 @@ end)
 
 Section:NewButton("Endless Mode (Fixed)", "Made by DripCapybara & Fixed By Gab", function()
 loadstring(game:HttpGet("https://pastefy.app/EnSmizjL/raw"))()
+end) 
 
 Section:NewButton("Hollow Mode", "Made by someone that idk", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-DAILY-RUNS-Hollow-Mode-91878"))()
