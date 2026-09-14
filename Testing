@@ -28,8 +28,8 @@ Section:NewButton("Ultra Hard Mode (UPDATED)", " Made By Zunxd", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Junxd-03/UltraHardModeUpdate/refs/heads/main/UltraHardMode.lua"))()
 end)
 
-Section:NewButton("Fear Mode (Fixed)", "Recreated by Voorpr0", function()
-loadstring(game:HttpGet("https://pastefy.app/jFdxd7Zu/raw"))()
+Section:NewButton("Fear Mode (Deleted)", "Recreated by Voorpr0", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Hard Mode (Locked)", "Reworked by Voorpr0 & Nowhywhats", function()
@@ -76,8 +76,8 @@ Section:NewButton("Fog Mode (Released)", "Made By Vuivuiviu2", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Ganyu06112/Fog-Mode/refs/heads/main/Fog-Mode.lua"))()
 end)
 
-Section:NewButton("Impossible Mode V1.8 (Fixed)", "Fixed by Voorpr0 & Nowhywwhat & Guestly & Vuivuiviu2", function()
-loadstring(game:HttpGet("https://pastefy.app/rcWn8qtU/raw"))()
+Section:NewButton("Impossible Mode V1.8 (Deleted)", "Fixed by Voorpr0 & Nowhywwhat & Guestly & Vuivuiviu2", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nicestguy3371/prob-a-admin-panel-doors/refs/heads/main/my%20name%20is%20dev%20panel%20but%20not%20loadsring.lua"))()
 end)
 
 Section:NewButton("Hallucination Mode (Easy Version)", " Credit to Guestly (Celestian)", function()
