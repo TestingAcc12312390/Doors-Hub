@@ -1167,7 +1167,7 @@ loadstring(game:HttpGet("https://pastebin.com/raw/WcYCnACD"))()
 end)
 
 Section:NewButton("Rocket Launcher", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/Scripts/main/rocketLauncher.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/refs/heads/main/RocketLauncher/script.lua"))()
 end)
 
 Section:NewButton("Flashlight V1", "ButtonInfo", function()
@@ -1322,7 +1322,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/GuestlyTheGreatestGue
 end)
 
 Section:NewButton("Seek Gun", "ButtonInfo", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/Scripts/main/seekgun.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/seekgun.lua"))()
 end)
 
 Section:NewButton("NVCS-3000", "ButtonInfo", function()
@@ -1467,10 +1467,6 @@ end)
 
 Section:NewButton("Fragmented Mode (Reignited)", "Made by OG Hunger (New)", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Fragmentend-Reiginited/refs/heads/main/Fragmented%20Reiginited"))()
-end)
-
-Section:NewButton("Hardcore Mode V99999999", "Credit to RealblueYT", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/tranhuuthien958-arch/Hradcore-v999999/refs/heads/main/Hradcore%20v99999999", true))()
 end)
 
 Section:NewButton("Hardcore Reignited Mode (Recreated)", "Credit to Guestly (Celestian)", function()
